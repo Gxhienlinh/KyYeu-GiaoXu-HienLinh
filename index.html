@@ -198,7 +198,46 @@
     text-transform: uppercase;
   }
 
-  .section-text h4 {
+  .priest-card {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(14,30,53,0.05) 100%);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-left: 4px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 2px;
+}
+.priest-card h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.priest-card p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+.council-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+.council-table td {
+  padding: 0.4rem 0.8rem;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  line-height: 1.6;
+}
+.council-table td:first-child {
+  width: 60%;
+  color: var(--text);
+}
+.council-table td:last-child {
+  color: var(--gold-dark);
+  font-style: italic;
+}
+.section-text h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
     font-style: italic;
@@ -307,7 +346,9 @@
 </head>
 <body>
 
-<nav class="sidebar">
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+<nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <span class="cross">✝</span>
     <h1>KỶ YẾU<br>GIÁO XỨ<br>HIỂN LINH</h1>
@@ -382,27 +423,37 @@
 <h3>CÁC LINH MỤC VÀ HỘI ĐỒNG MỤC VỤ</h3>
 <h3>GIÁO XỨ HIỂN LINH QUA CÁC NHIỆM KỲ</h3>
 <h3>1.CÁC LINH MỤC PHỤC VỤ GIÁO XỨ HIỂN LINH:</h3>
-<h4>1.Linh mục Luca PHẠM ANH DỤ</h4>
-<h4>Sinh ngày 24 tháng 11 năm 1927</h4>
-<h4>Phục vụ giáo xứ từ năm 1964 đến năm 1975</h4>
-<h4>Năm 1975 xuất ngoại sang Hoa Kỳ</h4>
-<h4>An nghỉ trong Chúa lúc 19g53 phút ngày 13-11-1999 tại Hoa Kỳ</h4>
-<h4>Hưởng thọ 72 tuổi</h4>
+<div class="priest-card">
+<h4>1. Linh Mục Luca PHẠM ANH DỤ</h4>
+<p>Sinh ngày 24 tháng 11 năm 1927</p>
+<p>Phục vụ giáo xứ từ năm 1964 đến năm 1975</p>
+<p>Năm 1975 xuất ngoại sang Hoa Kỳ</p>
+<p>An nghỉ trong Chúa lúc 19g53, ngày 13-11-1999 tại Hoa Kỳ — Hưởng thọ 72 tuổi</p>
+</div>
+<div class="priest-card">
 <h4>2. Linh Mục Phêrô VŨ VĂN HUỲNH</h4>
-<h4>Sinh ngày 23 tháng 4 năm 1923</h4>
-<h4>Phục vụ giáo xứ từ năm 1975 đến 30 tháng 5  năm 1992</h4>
-<h4>Ngày 30 tháng 5 năm 1992 nghỉ hưu dưỡng tại giáo Xứ Bạch Lâm</h4>
-<h4>Mừng Kim Khánh Linh mục ngày 1 tháng 5 năm 2000 tại Giáo Xứ Hiển Linh</h4>
-<h4>An nghỉ trong Chúa ngày 20 tháng 5 năm 2001 tại Giáo Xứ Bạch Lâm</h4>
-<h4>Hưởng thọ 78 tuổi</h4>
+<p>Sinh ngày 23 tháng 4 năm 1923</p>
+<p>Phục vụ giáo xứ từ năm 1975 đến ngày 30 tháng 5 năm 1992</p>
+<p>Ngày 30 tháng 5 năm 1992 nghỉ hưu dưỡng tại Giáo xứ Bạch Lâm</p>
+<p>Mừng Kim Khánh Linh mục ngày 1 tháng 5 năm 2000 tại Giáo xứ Hiển Linh</p>
+<p>An nghỉ trong Chúa ngày 20 tháng 5 năm 2001 tại Giáo xứ Bạch Lâm — Hưởng thọ 78 tuổi</p>
+</div>
+<div class="priest-card">
 <h4>3. Linh Mục Gioan NGUYỄN VĂN MINH</h4>
-<h4>Sinh ngày 2 tháng 1 năm 1932</h4>
-<h4>Phục vụ giáo xứ từ năm 1993 đến ngày 31 tháng 7 năm 2013</h4>
-<h4>Mừng Kim Khánh Linh mục ngày 23 tháng 4 năm 2012</h4>
-<h4>Ngày 31 tháng 7 năm 2013 nghỉ hưu an dưỡng tại TP. Hồ Chí Minh</h4>
+<p>Sinh ngày 2 tháng 1 năm 1932</p>
+<p>Phục vụ giáo xứ từ năm 1993 đến ngày 31 tháng 7 năm 2013</p>
+<p>Mừng Kim Khánh Linh mục ngày 23 tháng 4 năm 2012</p>
+<p>Ngày 31 tháng 7 năm 2013 nghỉ hưu an dưỡng tại TP. Hồ Chí Minh</p>
+</div>
+<div class="priest-card">
 <h4>4. Linh Mục Giuse PHẠM SỸ TÙNG</h4>
-<h4>Sinh ngày 07 tháng 12 năm 1969</h4>
-<h4>Chánh xứ Giáo Xứ Hiển Linh từ năm 2013 đến nay</h4>
+<p>Sinh ngày 07 tháng 12 năm 1969</p>
+<p>Phục vụ Giáo xứ Hiển Linh từ năm 2013 đến năm 2021</p>
+</div>
+<div class="priest-card">
+<h4>5. Linh Mục Giuse NGUYỄN QUỐC VƯƠNG</h4>
+<p>Chánh xứ Giáo xứ Hiển Linh từ ngày 27 tháng 11 năm 2021 cho đến nay (2024)</p>
+</div>
 <h3>2. DANH SÁCH BAN THƯỜNG VỤ</h3>
 <h3>TỪ KHI THÀNH LẬP GIÁO XỨ CHO ĐẾN NAY.</h3>
 <h3>NĂM 1968: BẦU CỬ HỘI ĐỒNG MỤC VỤ GIÁO XỨ</h3>
@@ -423,59 +474,39 @@
     <h2>Ban Thường Vụ HĐMVX</h2>
   </div>
   <div class="section-content">
-    <div class="section-text"><h3>GIÁO XỨ HIỂN LINH</h3>
-<h4>Số 5GH Ngô Tất Tố, Phường 22, Quận Bình Thạnh, Tp.HCM</h4>
-<h3>QUÁ TRÌNH HÌNH THÀNH VÀ PHÁT TRIỂN</h3>
-<p>Năm 1964: Cha Luca Phạm Anh Dụ khởi công xây dựng Nhà Thờ trên  thửa ruộng 800m2 bằng vật liệu nhẹ, tường gạch, mái tole. Nơi đây thuộc Giáo khu 9 Giáo xứ Thị Nghè. Hằng ngày cộng đoàn giáo dân đến cầu nguyện. Chúa nhật mới có Linh mục đến dâng Thánh Lễ.</p>
-<p>Năm 1965: Cha Luca Phạm Anh Dụ được bổ nhiệm làm Cha quản nhiệm xứ tiên khởi.</p>
-<p>Năm 1968: Đức Cha Phanxicô Xaviê Trần Thanh Khâm đến ban phép thành lập giáo xứ, lấy tên là Giáo xứ Hiển Linh. Giáo dân nơi đây tách rời khỏi Giáo xứ Thị Nghè. Cha Luca Phạm Anh Dụ phục vụ giáo xứ từ năm 1964 đến năm 1975.</p>
-<p>Năm 1975: Cha Luca Phạm Anh Dụ đi xa, tòa Tổng Giám Mục bổ nhiệm  Cha Phêrô Vũ Văn Huỳnh kế nhiệm phụ trách Giáo xứ Hiển Linh.</p>
-<p>Năm 1979: Giáo dân xây dựng đài Đức Mẹ để tỏ lòng tri ân và Đức Mẹ hằng che chở cứu giúp.</p>
-<p>Ngày 4 tháng 12 năm 1988: Khởi công xây dựng tháp chuông để làm tín hiệu báo thức, cũng như lời mời gọi của Chúa cho các tín hữu đến Nhà Thờ cầu nguyện và dâng lễ hằng ngày.</p>
-<h4>Năm 1992: Cha Phêrô Vũ Văn Huỳnh về hưu dưỡng</h4>
-<p>Năm 1993: Tòa Tổng Giám Mục bổ nhiệm Cha Gioan Nguyễn Văn Minh làm Cha Chánh xứ Giáo xứ Hiển Linh.</p>
-<p>Ngày 18 tháng 4 năm 1994: Được sự chấp thuận của Tòa Tổng Giám Mục, Nhà Thờ lần thứ 2 được xây dựng lại hoàn toàn, vì Nhà Thờ cũ đã xuống cấp trầm trọng.</p>
-<p>Ngày 6 tháng 1 năm 1995: Đức Cha Gioan Baotixita Bùi Tuần long trọng cắt băng khánh thành Nhà Thờ mới, trong ngày mừng Bổn Mạng giáo xứ: Lễ Chúa Hiển Linh.</p>
-<p>Ngày 1 tháng 5 năm 2000: Để tỏ lòng tri ân Cha Phêrô Vũ Văn Huỳnh, giáo xứ hân hoan hiệp dâng Thánh Lễ mừng 50 năm Kim Khánh Linh mục của Cha.</p>
-<p>Năm 2001: Giáo xứ xây lại đài Đức Mẹ lần thứ 2, đại tu khuôn viên Nhà Thờ, xây dựng hàng rào sắt dọc bờ kè bao quanh Nhà Thờ cho vững chắc và khang trang. Tiếp đến xây dựng đài Thánh Giuse để cảm tạ tri ân vị Thánh Cả hằng gìn giữ và bảo vệ cho giáo xứ.</p>
-<p>Ngày 19 tháng 3 năm 2004: Giáo xứ vui mừng hiệp dâng Thánh Lễ tạ ơn Thiên Chúa, qua lời cầu bầu của Đức Mẹ Maria và Thánh Cả Giuse, kỷ niệm Nhà Thờ tròn 40 tuổi (19/3/1964 - 19/3/2004).</p>
-<p>Ngày 16 tháng 4 năm 2006: Đức Hồng Y Gioan Baotixita Phạm Minh Mẫn, Tổng Giám Mục Giáo phận Sài Gòn, đã công nhận Giáo xứ Hiển Linh là một Giáo xứ thuộc Giáo phận từ ngày 23/6/1969.</p>
-<p>Ngày 23 tháng 4 năm 2012: Giáo xứ hân hoan mừng Kim Khánh 50 năm Linh mục và mừng thọ 80 tuổi Cha Gioan Nguyễn Văn Minh.</p>
-<p>Ngày 24 tháng 7 năm 2013: Cha Giuse Phạm Sỹ Tùng được Tòa Tổng Giám Mục bổ nhiệm làm Cha Chánh xứ Giáo xứ Hiển Linh.</p>
-<p>Ngày 31 tháng 7 năm 2013: Được sự chấp thuận của Tòa Tổng Giám Mục, Cha Gioan Nguyễn Văn Minh nghỉ hưu. Ngài đã phục vụ Giáo xứ Hiển Linh từ năm 1993 đến 31/7/2013.</p>
-<p>Ngày 10 tháng 8 năm 2013: Thánh Lễ nhậm chức của Cha Sở mới Giuse Phạm Sỹ Tùng, được cử hành đồng tế long trọng trong sự chào đón nồng nhiệt của toàn thể cộng đoàn dân Chúa Giáo xứ Hiển Linh.</p>
-<p>Ngày 20 tháng 8 năm 2013: Được sự chỉ đạo của Cha Chánh xứ. Hội đồng   mục vụ giáo xứ trùng tu lại nhà xứ và các phòng học giáo lý cho khang trang. Di dời và tu sửa đài Đức Mẹ hoàn chỉnh như hiện nay.</p>
-<p>Tháng 10 năm 2013: Xây dựng thư quán cạnh phòng bảo vệ để phục vụ nhu cầu của giáo xứ.</p>
-<p>Năm 2014: Đại tu lại khu vực Cung Thánh và lát gạch nền Nhà Thờ, thay mới toàn bộ hệ thống âm thanh trong và ngoài Nhà Thờ, lắp ráp thêm hệ thống ánh sáng phục vụ cho các chương trình diễn nguyện và các lễ lớn. Với sự lãnh đạo của Cha Chánh xứ cùng với sự cộng tác của hội đồng mục vụ giáo xứ, các hội đoàn và toàn thể cộng đoàn dân Chúa, Giáo xứ Hiển Linh ngày càng phát triển, khang trang và sạch đẹp như hiện nay.</p>
-<p>Tháng 7 năm 2018: Để chào mừng Ngày Khai mạc Năm Thánh, dưới sự chỉ đạo của Cha Sở, hội đồng mục vụ giáo xứ đã sơn mới lại trong và ngoài ngôi Thánh Đường, sơn mới tháp chuông và các phòng học giáo lý.</p>
-<p>Ngày 4 tháng 1 năm 2019:  Đức Cha Louis Nguyễn Anh Tuấn cùng quý Cha trong hạt Gia Định đã đến dâng Thánh lễ đồng tế và chúc mừng Giáo Xứ Khai Mạc Năm Thánh, Mừng 50 Năm Thành Lập Giáo xứ Hiển Linh .</p>
-<h3>CÁC LINH MỤC VÀ HỘI ĐỒNG MỤC VỤ</h3>
-<h3>GIÁO XỨ HIỂN LINH QUA CÁC NHIỆM KỲ</h3>
+    <div class="section-text"><h3>CÁC LINH MỤC VÀ HỘI ĐỒNG MỤC VỤ GIÁO XỨ QUA CÁC NHIỆM KỲ</h3>
 <h3>1.CÁC LINH MỤC PHỤC VỤ GIÁO XỨ HIỂN LINH:</h3>
-<h4>1.Linh mục Luca PHẠM ANH DỤ</h4>
-<h4>Sinh ngày 24 tháng 11 năm 1927</h4>
-<h4>Phục vụ giáo xứ từ năm 1964 đến năm 1975</h4>
-<h4>Năm 1975 xuất ngoại sang Hoa Kỳ</h4>
-<h4>An nghỉ trong Chúa lúc 19g53 phút ngày 13-11-1999 tại Hoa Kỳ</h4>
-<h4>Hưởng thọ 72 tuổi</h4>
+<div class="priest-card">
+<h4>1. Linh Mục Luca PHẠM ANH DỤ</h4>
+<p>Sinh ngày 24 tháng 11 năm 1927</p>
+<p>Phục vụ giáo xứ từ năm 1964 đến năm 1975</p>
+<p>Năm 1975 xuất ngoại sang Hoa Kỳ</p>
+<p>An nghỉ trong Chúa lúc 19g53, ngày 13-11-1999 tại Hoa Kỳ — Hưởng thọ 72 tuổi</p>
+</div>
+<div class="priest-card">
 <h4>2. Linh Mục Phêrô VŨ VĂN HUỲNH</h4>
-<h4>Sinh ngày 23 tháng 4 năm 1923</h4>
-<h4>Phục vụ giáo xứ từ năm 1975 đến 30 tháng 5  năm 1992</h4>
-<h4>Ngày 30 tháng 5 năm 1992 nghỉ hưu dưỡng tại giáo Xứ Bạch Lâm</h4>
-<h4>Mừng Kim Khánh Linh mục ngày 1 tháng 5 năm 2000 tại Giáo Xứ Hiển Linh</h4>
-<h4>An nghỉ trong Chúa ngày 20 tháng 5 năm 2001 tại Giáo Xứ Bạch Lâm</h4>
-<h4>Hưởng thọ 78 tuổi</h4>
+<p>Sinh ngày 23 tháng 4 năm 1923</p>
+<p>Phục vụ giáo xứ từ năm 1975 đến ngày 30 tháng 5 năm 1992</p>
+<p>Ngày 30 tháng 5 năm 1992 nghỉ hưu dưỡng tại Giáo xứ Bạch Lâm</p>
+<p>Mừng Kim Khánh Linh mục ngày 1 tháng 5 năm 2000 tại Giáo xứ Hiển Linh</p>
+<p>An nghỉ trong Chúa ngày 20 tháng 5 năm 2001 tại Giáo xứ Bạch Lâm — Hưởng thọ 78 tuổi</p>
+</div>
+<div class="priest-card">
 <h4>3. Linh Mục Gioan NGUYỄN VĂN MINH</h4>
-<h4>Sinh ngày 2 tháng 1 năm 1932</h4>
-<h4>Phục vụ giáo xứ từ năm 1993 đến ngày 31 tháng 7 năm 2013</h4>
-<h4>Mừng Kim Khánh Linh mục ngày 23 tháng 4 năm 2012</h4>
-<h4>Ngày 31 tháng 7 năm 2013 nghỉ hưu an dưỡng tại TP. Hồ Chí Minh</h4>
+<p>Sinh ngày 2 tháng 1 năm 1932</p>
+<p>Phục vụ giáo xứ từ năm 1993 đến ngày 31 tháng 7 năm 2013</p>
+<p>Mừng Kim Khánh Linh mục ngày 23 tháng 4 năm 2012</p>
+<p>Ngày 31 tháng 7 năm 2013 nghỉ hưu an dưỡng tại TP. Hồ Chí Minh</p>
+</div>
+<div class="priest-card">
 <h4>4. Linh Mục Giuse PHẠM SỸ TÙNG</h4>
-<h4>Sinh ngày 07 tháng 12 năm 1969</h4>
-<h4>Phục vụ từ năm 2013 đến năm 2021</h4>
-<h4>5.Linh mục Giuse NGUYỄN QUỐC VƯƠNG</h4>
-<h4>Sinh ngày  tháng  năm</h4>
-<h4>Chánh xứ Giáo xứ Hiển Linh từ 27 tháng 11 năm 2021 cho đến nay (2024)</h4>
+<p>Sinh ngày 07 tháng 12 năm 1969</p>
+<p>Phục vụ Giáo xứ Hiển Linh từ năm 2013 đến năm 2021</p>
+</div>
+<div class="priest-card">
+<h4>5. Linh Mục Giuse NGUYỄN QUỐC VƯƠNG</h4>
+<p>Chánh xứ Giáo xứ Hiển Linh từ ngày 27 tháng 11 năm 2021 cho đến nay (2024)</p>
+</div>
 <h3>2. DANH SÁCH BAN THƯỜNG VỤ</h3>
 <h3>TỪ KHI THÀNH LẬP GIÁO XỨ CHO ĐẾN NAY.</h3>
 <h3>NĂM 1968: BẦU CỬ HỘI ĐỒNG MỤC VỤ GIÁO XỨ</h3>
@@ -483,13 +514,13 @@
 <h4>Ông Giuse Nguyễn Văn Miêng	 :Phó Chủ Tịch</h4>
 <h4>Ông Phaolô Nguyễn Khắc Hãng	  :Thư Ký</h4>
 <h3>NĂM 1971: BẦU CỬ HỘI ĐỒNG MỤC VỤ GIÁO XỨ</h3></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/ban-tv/Bổn mạng HDMVGX 2019.JPG')"><img src="hình ảnh/ban-tv/Bổn mạng HDMVGX 2019.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/ban-tv/HĐGX 2016.JPG')"><img src="hình ảnh/ban-tv/HĐGX 2016.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_2774.JPG')"><img src="hình ảnh/ban-tv/IMG_2774.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_8250.JPG')"><img src="hình ảnh/ban-tv/IMG_8250.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_8251.JPG')"><img src="hình ảnh/ban-tv/IMG_8251.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_8253.JPG')"><img src="hình ảnh/ban-tv/IMG_8253.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_9996.JPG')"><img src="hình ảnh/ban-tv/IMG_9996.JPG" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/ban-tv/Bổn mạng HDMVGX 2019.JPG')"><img src="images/ban-tv/Bổn mạng HDMVGX 2019.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/ban-tv/HĐGX 2016.JPG')"><img src="images/ban-tv/HĐGX 2016.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_2774.JPG')"><img src="images/ban-tv/IMG_2774.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_8250.JPG')"><img src="images/ban-tv/IMG_8250.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_8251.JPG')"><img src="images/ban-tv/IMG_8251.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_8253.JPG')"><img src="images/ban-tv/IMG_8253.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/ban-tv/IMG_9996.JPG')"><img src="images/ban-tv/IMG_9996.JPG" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -573,9 +604,9 @@
 <h4>Bà Maria Trần Thị Hồng	Thư ký</h4>
 <h4>Bà Maria Phạm Thị Thu	Thủ quỹ</h4>
 <p>Giáo khu II chúng con nguyện xin hai Thánh Phêrô và Phaolô cầu bầu cùng Chúa gìn giữ Giáo khu cũng như Giáo xứ chúng con luôn vững vàng trong hành trình Đức Tin hôm nay.</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/khu-2/Ban chấp hành Phero Phao Lô nhận ủy nhiệm thư.jpg')"><img src="hình ảnh/khu-2/Ban chấp hành Phero Phao Lô nhận ủy nhiệm thư.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/khu-2/Bổn mạng khu Phero Phaolo 2.jpg')"><img src="hình ảnh/khu-2/Bổn mạng khu Phero Phaolo 2.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/khu-2/Bổn mạng khu Phero Phaolo 3.jpg')"><img src="hình ảnh/khu-2/Bổn mạng khu Phero Phaolo 3.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/khu-2/Ban chấp hành Phero Phao Lô nhận ủy nhiệm thư.jpg')"><img src="images/khu-2/Ban chấp hành Phero Phao Lô nhận ủy nhiệm thư.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/khu-2/Bổn mạng khu Phero Phaolo 2.jpg')"><img src="images/khu-2/Bổn mạng khu Phero Phaolo 2.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/khu-2/Bổn mạng khu Phero Phaolo 3.jpg')"><img src="images/khu-2/Bổn mạng khu Phero Phaolo 3.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -621,7 +652,7 @@
 <p>Một chút….</p>
 <p>Là cánh tay nối dài của Cha Sở và Ban Thường vụ trong công việc gắn kết, nâng đỡ cộng đoàn dân Chúa tại giáo khu. Qua đó quý chức giúp cho các thành viên của từng gia đình được lãnh nhận các Bí tích từ khi mới sinh đến lúc sắp lâm chung. Lo tang lễ, đọc kinh khi có người được Chúa gọi về… Ngoài ra giáo khu còn phối hợp với hội Lêgiô Marie để giúp đỡ những gia đình gặp khó khăn, nguội lạnh về đức tin, để giúp họ trở về sống đạo tốt hơn.</p>
 <p>Hòa cùng niềm vui mừng Năm Thánh của giáo xứ, Giáo khu Gioan Baotixita xin hiệp lòng chúc tụng và cảm tạ Thiên Chúa, tạ ơn Thánh Quan Thầy đã thương ban muôn ơn phúc cho giáo khu chúng con. Trong tâm tình hân hoan, giáo khu cũng không quên ghi nhớ công ơn các quý Chức, quý vị Ân nhân cùng toàn thể giáo dân trong và ngoài giáo khu đã tận tình cộng tác trong công việc chung của giáo khu. Nguyện xin Thiên Chúa và Thánh Quan Thầy Gioan Baotixita trả công bội hậu cho quý vị.</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/khu-3/Ban chấp Hành Khu 3.JPG')"><img src="hình ảnh/khu-3/Ban chấp Hành Khu 3.JPG" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/khu-3/Ban chấp Hành Khu 3.JPG')"><img src="images/khu-3/Ban chấp Hành Khu 3.JPG" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -635,7 +666,7 @@
     <div class="section-text"><h3>GIÁO KHU IV</h3>
 <h4>Thánh Bổn Mạng: Thánh Phanxicô Xaviê</h4>
 <p>Ngày mừng Lễ Bổn Mạng: ngày 3 tháng 12 hằng năm.</p>
-<p>Thánh Phanxicô Xaviê là một vị Thánh truyền giáo, nên giáo khu VI đã luôn noi theo gương Thánh Bổn Mạng của mình, trong mọi sinh hoạt đều mang tinh thần truyền giáo làm căn bản.</p>
+<p>Thánh Phanxicô Xaviê là một vị Thánh truyền giáo, nên giáo khu IV đã luôn noi theo gương Thánh Bổn Mạng của mình, trong mọi sinh hoạt đều mang tinh thần truyền giáo làm căn bản.</p>
 <p>Trong quá khứ cũng như hiện nay, Giáo khu Phanxicô Xaviê luôn đồng hành cùng giáo xứ trong mọi công việc xây dựng phát triển giáo xứ, có thể kể đến việc vận động các gia đình trong giáo khu đóng góp xây dựng lại ngôi Thánh Đường vào năm 1994 và đến các giáo xứ bạn trong Giáo Hạt Gia Định để xin giúp đỡ.</p>
 <p>Ban Chấp hành Giáo khu vẫn luôn cố gắng chăm sóc cho bà con giáo dân về mặt Đức Tin rất chu đáo. Từ việc rước Mẹ Maria đến các gia đình và cùng gia đình dâng lên Mẹ những câu kinh Mân Côi, góp phần nâng cao đời sống Đức Tin các gia đình trong giáo khu. Bên cạnh đó nếu gia đình nào có hữu sự thì ban chấp hành đều đến thăm viếng và động viên gia đình nhất là khi gia đình có người thân qua đời. Những lời kinh và lời nguyện của giáo dân trong giáo khu cũng như của các đoàn thể phần nào giúp gia đình vơi đi sự mất mát với người đã khuất.</p>
 <p>Bằng những hành động của mình, Giáo Khu Phanxicô Xaviê mong có thể góp phần vào công cuộc truyền giáo của giáo xứ cũng như noi gương Thánh Bổn Mạng của mình góp phần vào cánh đồng truyền giáo Việt Nam đang mênh mông nhưng thợ gặt thì ít.</p>
@@ -665,7 +696,7 @@
 <h4>Phó khu 2	     : Ông Phaolô Nguyễn Trí Thức</h4>
 <h4>Thư ký	     : Bà Maria Lưu Thị Thanh</h4>
 <h4>Thủ quỹ	      : Bà Maria Nguyễn Thị Thu Thảo</h4></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/khu-4/DSC_0236.JPG')"><img src="hình ảnh/khu-4/DSC_0236.JPG" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/khu-4/DSC_0236.JPG')"><img src="images/khu-4/DSC_0236.JPG" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -693,10 +724,10 @@
 <p>Tuy sống nơi đô thị nhưng con người lao động nơi đây không thiếu tình nghĩa, ấm áp, sẵn sàng giúp đỡ lẫn nhau và giúp đỡ khi các Sơ cần nhờ: khi thì sửa cái quạt, lúc thì dán lỗ thông gió, sửa cái mái nhà dột v.v… có nải chuối, quả trứng vịt ở quê mang lên cũng chia sẻ với các Sơ, lâu lâu lại có ổ bánh bông lan tự làm, bánh cuốn nhà tráng, chè sữa nhà nấu, khi có con gà, con vịt để dành biếu Sơ v.v... Thôi thì mùa nào thức đó không kể hết. Xin tạ ơn và cầu xin Chúa trả công, chúc lành cho tất cả những tấm chân tình đó.</p>
 <p>Nhìn lại hành trình gần 30 năm chúng con được hiện diện nơi Giáo xứ Hiển Linh thân thương này, với biết bao vui buồn và những thăng trầm, nổi trôi… nhưng thật là hạnh phúc vì cộng đoàn chúng con cùng được chung tay xây dựng giáo xứ với Cha Sở và mọi người. Để có được một Giáo xứ Hiển Linh như hôm nay, chúng ta cùng tạ ơn Thiên Chúa vì Hồng Ân Ngài ban trải dài suốt 50 năm qua, đồng thời vô cùng biết ơn quý Cha Chánh phó xứ, thầy xứ… quý ông bà anh chị em đi trước đã có công gìn giữ và xây dựng giáo xứ từ một họ lẻ nhỏ bé lọt thỏm giữa phố thị phồn hoa bậc nhất Việt Nam, nay đã trở thành giáo xứ có sức sống đầy năng động, tình nghĩa chan hoà, tuy vẫn còn những giới hạn nào đó, sự chuyển mình tích cực hiện tại của giáo xứ là điều không thể phủ nhận. Mừng kỷ niệm 50 năm thành lập giáo xứ cũng là mốc thời gian để cùng anh chị em trong giáo xứ xác định một bước ngoặt mới, ý thức mình là những chi thể của giáo xứ, chúng con nguyện chung tay với vị chủ chăn, đóng góp phần nhỏ của mình bằng cả khối óc lẫn con tim, để nhờ đó, giúp cho anh chị em lương giáo nhận biết khuôn mặt thật của Thiên Chúa tình yêu.</p>
 <p>Cuối cùng chúng con chân thành cám ơn Cha và Giáo Xứ, vì nhờ có ngày kỷ niệm 50 năm của Giáo xứ, sự động viên tin tưởng mãnh liệt của Cha Chánh xứ đã giúp chúng con can đảm sáng tạo ra một thể văn mới, thể văn …“Hiển Linh” . Ôi, nghe sao mà vi diệu!</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/cac-so/20151218_195241.jpg')"><img src="hình ảnh/cac-so/20151218_195241.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/cac-so/doi.jpg')"><img src="hình ảnh/cac-so/doi.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/cac-so/gui.JPG')"><img src="hình ảnh/cac-so/gui.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/cac-so/không nhà.jpg')"><img src="hình ảnh/cac-so/không nhà.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/cac-so/20151218_195241.jpg')"><img src="images/cac-so/20151218_195241.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/cac-so/doi.jpg')"><img src="images/cac-so/doi.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/cac-so/gui.JPG')"><img src="images/cac-so/gui.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/cac-so/không nhà.jpg')"><img src="images/cac-so/không nhà.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -708,8 +739,8 @@
   </div>
   <div class="section-content">
     <div class="section-text"><p><em>Đang cập nhật nội dung...</em></p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/thanh-tam/snapedit_1734773162419.jpg')"><img src="hình ảnh/thanh-tam/snapedit_1734773162419.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/thanh-tam/snapedit_1734773255870.jpg')"><img src="hình ảnh/thanh-tam/snapedit_1734773255870.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/thanh-tam/snapedit_1734773162419.jpg')"><img src="images/thanh-tam/snapedit_1734773162419.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/thanh-tam/snapedit_1734773255870.jpg')"><img src="images/thanh-tam/snapedit_1734773255870.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -742,8 +773,8 @@
 <p>Đọc kinh gia đình tháng Mân Côi (tháng 10).</p>
 <p>Đọc kinh gia đình tháng các Linh Hồn (tháng 11)… và các công việc khác do giáo xứ phân công.</p>
 <p>Các hoạt động đạo đức thiết thực này đã giúp cho các chị em biết sống hy sinh, cầu nguyện nhiều hơn và làm gương sáng cho các con cháu noi theo. Xin Chúa, Mẹ Maria, Thánh Cả Giuse chúc lành cho Cha Linh hướng, quý Hội đồng Mục vụ, các Hội Đoàn và các con cháu của chúng ta.</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/hien-mau/IMG_6630.jpg')"><img src="hình ảnh/hien-mau/IMG_6630.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hien-mau/IMG_6631.jpg')"><img src="hình ảnh/hien-mau/IMG_6631.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/hien-mau/IMG_6630.jpg')"><img src="images/hien-mau/IMG_6630.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hien-mau/IMG_6631.jpg')"><img src="images/hien-mau/IMG_6631.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -796,9 +827,9 @@
 <h4>Bà Maria Vũ Thị Tuyết Trinh	Đoàn Phó</h4>
 <h4>Ông Phêrô Nguyễn Đức Hiệu	Thư Ký</h4>
 <h4>Bà Maria Nguyễn Thị Khấn	Thủ Quỹ</h4></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/daminh/DÒNG BA ĐAMINH .JPG')"><img src="hình ảnh/daminh/DÒNG BA ĐAMINH .JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/daminh/DÒNG BA ĐAMINH 1.JPG')"><img src="hình ảnh/daminh/DÒNG BA ĐAMINH 1.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/daminh/Huynh đoàn giáo dân Đa Minh.jpg')"><img src="hình ảnh/daminh/Huynh đoàn giáo dân Đa Minh.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/daminh/DÒNG BA ĐAMINH .JPG')"><img src="images/daminh/DÒNG BA ĐAMINH .JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/daminh/DÒNG BA ĐAMINH 1.JPG')"><img src="images/daminh/DÒNG BA ĐAMINH 1.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/daminh/Huynh đoàn giáo dân Đa Minh.jpg')"><img src="images/daminh/Huynh đoàn giáo dân Đa Minh.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -839,7 +870,7 @@
 <h4>Hội viên           : - Bà Maria Trần Thị Việt</h4>
 <h4>- Bà Maria Nguyễn Thị Trang</h4>
 <p>Theo chân Mẹ Maria để cùng Mẹ ra khơi, ước mong anh chị em Legio luôn biết nhìn lại chính mình, canh tân đời sống, để mỗi hội viên luôn là những viên đá sống động trong đền thờ Chúa Ba Ngôi.</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/legio/Legio Marie 2016 -2019.jpg')"><img src="hình ảnh/legio/Legio Marie 2016 -2019.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/legio/Legio Marie 2016 -2019.jpg')"><img src="images/legio/Legio Marie 2016 -2019.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -851,10 +882,10 @@
   </div>
   <div class="section-content">
     <div class="section-text"><p><em>Đang cập nhật nội dung...</em></p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/cecilia/20190718_092246.png')"><img src="hình ảnh/cecilia/20190718_092246.png" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/cecilia/20190718_092330.png')"><img src="hình ảnh/cecilia/20190718_092330.png" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/cecilia/CĐ Cecilia (2).JPG')"><img src="hình ảnh/cecilia/CĐ Cecilia (2).JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/cecilia/CĐ Cecilia.JPG')"><img src="hình ảnh/cecilia/CĐ Cecilia.JPG" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/cecilia/20190718_092246.png')"><img src="images/cecilia/20190718_092246.png" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/cecilia/20190718_092330.png')"><img src="images/cecilia/20190718_092330.png" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/cecilia/CĐ Cecilia (2).JPG')"><img src="images/cecilia/CĐ Cecilia (2).JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/cecilia/CĐ Cecilia.JPG')"><img src="images/cecilia/CĐ Cecilia.JPG" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -887,11 +918,11 @@
 <p>Ca đoàn là một tập thể tín hữu, là những con người đạo đức, có đức tin và luôn cố gắng sống xứng đáng niềm tin bản thân để thi hành thừa tác vụ ca hát trong các nghi lễ Phụng vụ. Các ca viên ý thức được việc dấn thân hy sinh, làm việc hăng say trong tinh thần đạo đức sốt sắng, học hỏi và khiêm nhường.</p>
 <p>Ca đoàn chúng con mời gọi các bạn trẻ có nhiệt huyết hãy đến tham gia cộng tác cùng chúng con, đóng góp chút thời gian quý báu để xây dựng giáo xứ ngày càng phát triển vững mạnh hơn về đời sống “Đức Tin”. Ngày tập hát vào thứ năm hàng tuần lúc 19h30 và sau lễ chiều Chúa nhật hàng tuần.</p>
 <p>Ca đoàn hiện tại vẫn còn gặp muôn vàn khó khăn, nhưng các ca viên cùng nhau cộng tác, chia sẻ, hỗ trợ vào công việc chung để hoàn thành sứ vụ ca hát phục vụ cộng đoàn thêm phần sốt sắng khi tham dự Thánh Lễ. Luôn vui vẻ, ân cần, nhiệt tâm chu toàn bổn phận, không ngừng nỗ lực ngày một trưởng thành hơn, mong mỏi được qui tụ nơi ngôi Thánh Đường này để đồng hành cùng giáo xứ trên con đường Chúa đã gieo, như ngôi nhà của chúng con, cùng nhau hát khen ca ngợi Chúa, cùng “Ẩn náu dưới chân bàn thờ” và giúp chúng con trở nên muối men cho đời.</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/DSC_0202.JPG')"><img src="hình ảnh/gioi-tre-ca/DSC_0202.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/DSC_0844.JPG')"><img src="hình ảnh/gioi-tre-ca/DSC_0844.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/DSC_0853.JPG')"><img src="hình ảnh/gioi-tre-ca/DSC_0853.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/gioi tre 1.jpg')"><img src="hình ảnh/gioi-tre-ca/gioi tre 1.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/gioi tre.jpg')"><img src="hình ảnh/gioi-tre-ca/gioi tre.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/DSC_0202.JPG')"><img src="images/gioi-tre-ca/DSC_0202.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/DSC_0844.JPG')"><img src="images/gioi-tre-ca/DSC_0844.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/DSC_0853.JPG')"><img src="images/gioi-tre-ca/DSC_0853.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/gioi tre 1.jpg')"><img src="images/gioi-tre-ca/gioi tre 1.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/gioi-tre-ca/gioi tre.jpg')"><img src="images/gioi-tre-ca/gioi tre.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -903,11 +934,11 @@
   </div>
   <div class="section-content">
     <div class="section-text"><p><em>Đang cập nhật nội dung...</em></p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/goretti/Ca đoàn Maria Goretti.jpg')"><img src="hình ảnh/goretti/Ca đoàn Maria Goretti.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/goretti/DSC00022.JPG')"><img src="hình ảnh/goretti/DSC00022.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/goretti/DSC00054.JPG')"><img src="hình ảnh/goretti/DSC00054.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/goretti/IMG_8270.JPG')"><img src="hình ảnh/goretti/IMG_8270.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/goretti/_DSC0205.JPG')"><img src="hình ảnh/goretti/_DSC0205.JPG" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/goretti/Ca đoàn Maria Goretti.jpg')"><img src="images/goretti/Ca đoàn Maria Goretti.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/goretti/DSC00022.JPG')"><img src="images/goretti/DSC00022.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/goretti/DSC00054.JPG')"><img src="images/goretti/DSC00054.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/goretti/IMG_8270.JPG')"><img src="images/goretti/IMG_8270.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/goretti/_DSC0205.JPG')"><img src="images/goretti/_DSC0205.JPG" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -919,11 +950,11 @@
   </div>
   <div class="section-content">
     <div class="section-text"><p><em>Đang cập nhật nội dung...</em></p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/phuc-vu/BPV2.jpg')"><img src="hình ảnh/phuc-vu/BPV2.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl159188-final.png')"><img src="hình ảnh/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl159188-final.png" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl402277-final.png')"><img src="hình ảnh/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl402277-final.png" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl415321-final.png')"><img src="hình ảnh/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl415321-final.png" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl487126-final2.png')"><img src="hình ảnh/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl487126-final2.png" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/phuc-vu/BPV2.jpg')"><img src="images/phuc-vu/BPV2.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl159188-final.png')"><img src="images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl159188-final.png" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl402277-final.png')"><img src="images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl402277-final.png" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl415321-final.png')"><img src="images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl415321-final.png" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl487126-final2.png')"><img src="images/phuc-vu/ffdfahnks4m2ra3cfvjh5lranl487126-final2.png" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -944,11 +975,11 @@
 <p>Như những người lính, để được trở nên người phục vụ, chúng con được rèn luyện cách đi, dáng đứng, tư thế ngồi, quỳ rồi phải biết chắp tay thế nào, khi nào thì đứng yên, khi nào thì di chuyển, khi nào thì rung chuông… chưa kể còn phải hiểu và nhận biết hết các ý nghĩa qua cử chỉ bàn tay của Chủ Tế, của các vật dụng dùng trong Thánh Lễ, các nghi thức Phụng vụ Thánh nữa… Bên cạnh đó, chúng con còn biết nói năng nhỏ tiếng hoặc im lặng, đặc biệt là biết bày ra chuẩn bị trước và dọn vào cách thứ tự ngăn nắp khi xong việc… mà khi ở nhà, chưa chắc chúng con làm được! Dĩ nhiên là chúng con hễ ai làm tốt, làm đúng thì được Cha và cộng đoàn khen, động viên, ngược lại thì bị nhắc nhở hay phải rèn luyện thêm. Đồng thời, anh em Lễ sinh chúng con (tuổi từ 7 đến 18+) còn được Cha Sở, quý phụ huynh, quý ân nhân quan tâm, chăm sóc… Mỗi khi được nghỉ học văn hóa ở trường, chúng con được tổ chức các chuyến đi nghỉ hè kết hợp thăm tặng quà bác ái tại các mái ấm ở Vũng Tàu, Sài Gòn, Phan Thiết… Mỗi khi Tết đến xuân về chúng con còn đi thăm và chúc Tết tại nhà lẫn nhau, cùng hiệp ý cầu nguyện cho gia đình mỗi thành viên, cùng nhau thực hiện Chuỗi Mân Côi Sống và còn nữa những hoạt động thể thao, văn nghệ cấp giáo hạt, giáo xứ… Chính nhờ những hoạt động rèn luyện học hỏi này mà anh em chúng con ngày càng lớn lên trong Ơn Thánh Chúa.</p>
 <p>Hiện nay, Ban Lễ sinh chúng con có khoảng trên 30 bạn nhỏ sinh hoạt dưới sự dìu dắt, hướng dẫn của anh Gioan Baotixita Nguyễn Hoàng Ngọc Tuấn làm trưởng ban và anh Gioan Trần Văn Tài phó ban.</p>
 <p>Anh em Ban Lễ sinh chúng con luôn biết ơn và ghi nhớ công ơn của quý Phụ huynh, của Cha Chánh xứ, của quý Thầy, quý Sơ, của quý Ân nhân và Mạnh thường quân, của các quý vị Phụ trách (Trưởng ban)… qua các thời kỳ thuộc giáo xứ Hiển Linh thân yêu. Chào đón 50 năm thành lập giáo xứ, chúng con tin rằng anh em Lễ Sinh ở từng thời kỳ hẳn sẽ luôn luôn ghi nhớ những kỷ niệm tuổi thơ được học hỏi để dâng hiến, được rèn luyện để nên Thánh và trên hết là được Phục Vụ Bàn Thánh trong ơn nghĩa cao trọng của Chúa.</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/le-sinh/ANH.JPG')"><img src="hình ảnh/le-sinh/ANH.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/le-sinh/DSC00126.JPG')"><img src="hình ảnh/le-sinh/DSC00126.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/le-sinh/DSC00230.JPG')"><img src="hình ảnh/le-sinh/DSC00230.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/le-sinh/DSC_0204.JPG')"><img src="hình ảnh/le-sinh/DSC_0204.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/le-sinh/ban le sinh.JPG')"><img src="hình ảnh/le-sinh/ban le sinh.JPG" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/le-sinh/ANH.JPG')"><img src="images/le-sinh/ANH.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/le-sinh/DSC00126.JPG')"><img src="images/le-sinh/DSC00126.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/le-sinh/DSC00230.JPG')"><img src="images/le-sinh/DSC00230.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/le-sinh/DSC_0204.JPG')"><img src="images/le-sinh/DSC_0204.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/le-sinh/ban le sinh.JPG')"><img src="images/le-sinh/ban le sinh.JPG" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -976,11 +1007,11 @@
 <p>Hằng tháng, Ban chấp hành Lòng Chúa Thương Xót Hiển Linh họp mở rộng trên giáo hạt và giáo phận để hiệp thông và tham gia các công tác và phong trào Lòng Chúa Thương Xót của giáo hạt và giáo phận để cùng nhau loan truyền Lòng Chúa Thương Xót lan rộng khắp nơi đến với mọi người.</p>
 <p>Công tác bác ái.</p>
 <p>Hằng năm, vào dịp Mùa Chay và Mùa Vọng, Cộng đoàn Lòng Chúa Thương Xót Hiển Linh thực hiện tối thiểu 2 chuyến công tác bác ái giúp đồng bào nghèo, các cụ già neo đơn, trẻ em mồ côi khuyết tật, đồng bào dân tộc vùng sâu vùng xa để chia sẻ phần nào những nỗi khó khăn, thiếu thốn của những con người kém may mắn trong xã hội và đem Chúa đến với những con người đáng thương đó.</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/lcttx/DSC_0195.JPG')"><img src="hình ảnh/lcttx/DSC_0195.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/lcttx/DSC_0197.JPG')"><img src="hình ảnh/lcttx/DSC_0197.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/lcttx/_DSC0167.JPG')"><img src="hình ảnh/lcttx/_DSC0167.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/lcttx/_DSC0168.JPG')"><img src="hình ảnh/lcttx/_DSC0168.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/lcttx/_DSC0205.JPG')"><img src="hình ảnh/lcttx/_DSC0205.JPG" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/lcttx/DSC_0195.JPG')"><img src="images/lcttx/DSC_0195.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/lcttx/DSC_0197.JPG')"><img src="images/lcttx/DSC_0197.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/lcttx/_DSC0167.JPG')"><img src="images/lcttx/_DSC0167.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/lcttx/_DSC0168.JPG')"><img src="images/lcttx/_DSC0168.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/lcttx/_DSC0205.JPG')"><img src="images/lcttx/_DSC0205.JPG" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -998,15 +1029,15 @@
 <p>Rất đơn sơ, họ vừa cầu nguyện cách riêng, vừa hy sinh thời giờ và công sức để đến những nơi, những hoàn cảnh cần đến họ. Thăm viếng bệnh nhân (tại gia và ở nơi bệnh viện) tìm hiểu và bàn cách giúp cho những trường hợp khó khăn (học phí và trợ vốn), không ngại xông pha vào những nơi những người còn chưa nhận biết Chúa (các cấp Chính quyền, người lương dân hay khác đạo...) tìm mọi cách để hỗ trợ cho những trường hợp cấp thiết... Họ còn bỏ đi cái sỉ diện bản thân đi đến những cơ sở sản xuất để xin việc cho những người có nhu cầu, thậm chí xin hỗ trợ hàng hóa giá thấp hầu có thêm kinh phí cho những hoạt động chính yếu, thiết thực mỗi khi Tết đến Xuân về hay các dịp lễ riêng cho người khó khăn, bệnh hoạn...</p>
 <p>Trong bầu không khí hân hoan chào mừng cột mốc 50 năm ngày hình thành nên Giáo xứ Hiển Linh này, chắc chắn rằng ai trong chúng ta, cách riêng những thành viên, cộng tác viên cùng quý vị ân nhân, mạnh thường quân của Ban Caritas xuyên suốt thời gian qua cũng thầm tạ ơn Chúa đã mời gọi chúng ta cùng “Lên đường” với Chúa để đến những nơi khó khăn, ngay cả trong chính mỗi người chúng ta đây, vậy nên hãy giúp chính mình trước rồi mới đến giúp những người – những nơi khác khó khăn hơn... Thật vậy, giúp mình và chiến thắng cái tôi của mình thật khó, phải không ạ? Trong mọi việc hãy tìm đến Chúa, qua mẹ Maria, để được Chúa soi chiếu và đồng hành cùng ta trong mọi sự, nhất là trong công tác bác ái, thực thi lòng nhân từ - giàu lòng thương xót của Thiên Chúa không từ bỏ một ai kêu cầu đến Người...</p>
 <p>Và sau hết, những người chọn công tác này như Cha Sở đã nói: Không cứ là người có điều kiện (vật chất), chỉ cần có lòng Mến và nhiệt tâm là được. Là một xứ nhỏ, đang phát triển, những người lương dân chiếm đa số... Nhà Thờ Hiển Linh chính là nơi đang cần lắm những tấm lòng “Mến” để đưa Chúa đến với mọi người qua những cách thế nêu trên của mỗi cá nhân. Tin rằng, là con của Chúa ai trong chúng ta cũng có lòng Mến Chúa – yêu người nhưng còn e ngại thể hiện ra bên ngoài. Vậy thì hãy mạnh mẽ hơn để cùng chúng tôi làm sáng danh Chúa khắp nơi mọi người nhé...</p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/caritas/1.jpg')"><img src="hình ảnh/caritas/1.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/2.jpg')"><img src="hình ảnh/caritas/2.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/_DSC0284.JPG')"><img src="hình ảnh/caritas/_DSC0284.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/_DSC0294.JPG')"><img src="hình ảnh/caritas/_DSC0294.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/_DSC0300.JPG')"><img src="hình ảnh/caritas/_DSC0300.JPG" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/z6133105709222_03c260833538ac55231a0213cdada03e.jpg')"><img src="hình ảnh/caritas/z6133105709222_03c260833538ac55231a0213cdada03e.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/z6133105751795_6bffd505da6252f637f64397e87c8ad8.jpg')"><img src="hình ảnh/caritas/z6133105751795_6bffd505da6252f637f64397e87c8ad8.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/z6133105788073_b77bdf95b70ec12eae1d307817c61317.jpg')"><img src="hình ảnh/caritas/z6133105788073_b77bdf95b70ec12eae1d307817c61317.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/caritas/z6133105830764_89144f0087a0c46e988a2be562f7ed51.jpg')"><img src="hình ảnh/caritas/z6133105830764_89144f0087a0c46e988a2be562f7ed51.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/caritas/1.jpg')"><img src="images/caritas/1.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/2.jpg')"><img src="images/caritas/2.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/_DSC0284.JPG')"><img src="images/caritas/_DSC0284.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/_DSC0294.JPG')"><img src="images/caritas/_DSC0294.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/_DSC0300.JPG')"><img src="images/caritas/_DSC0300.JPG" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/z6133105709222_03c260833538ac55231a0213cdada03e.jpg')"><img src="images/caritas/z6133105709222_03c260833538ac55231a0213cdada03e.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/z6133105751795_6bffd505da6252f637f64397e87c8ad8.jpg')"><img src="images/caritas/z6133105751795_6bffd505da6252f637f64397e87c8ad8.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/z6133105788073_b77bdf95b70ec12eae1d307817c61317.jpg')"><img src="images/caritas/z6133105788073_b77bdf95b70ec12eae1d307817c61317.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/caritas/z6133105830764_89144f0087a0c46e988a2be562f7ed51.jpg')"><img src="images/caritas/z6133105830764_89144f0087a0c46e988a2be562f7ed51.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -1073,26 +1104,26 @@
   </div>
   <div class="section-content">
     <div class="section-text"><p><em>Đang cập nhật nội dung...</em></p></div>
-    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg')"><img src="hình ảnh/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg')"><img src="hình ảnh/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_002_2d80a86a26386f0a6ce696b51b5e2198.jpg')"><img src="hình ảnh/hdmv/z6206576760958_002_2d80a86a26386f0a6ce696b51b5e2198.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_003_8765abc84b9a826e4bc5afaee8fb642f.jpg')"><img src="hình ảnh/hdmv/z6206576760958_003_8765abc84b9a826e4bc5afaee8fb642f.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_004_abd1648b88938399af28aebad4b82bfd.jpg')"><img src="hình ảnh/hdmv/z6206576760958_004_abd1648b88938399af28aebad4b82bfd.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_005_604ee136fc8fc25ed59812839b4f3691.jpg')"><img src="hình ảnh/hdmv/z6206576760958_005_604ee136fc8fc25ed59812839b4f3691.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_006_932645fbf1362894982ba93b81f8794e.jpg')"><img src="hình ảnh/hdmv/z6206576760958_006_932645fbf1362894982ba93b81f8794e.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_007_df79c10c38eb69a96fbd93d76868b262.jpg')"><img src="hình ảnh/hdmv/z6206576760958_007_df79c10c38eb69a96fbd93d76868b262.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_008_0052c01b824c4ef42cabe97d09a8fab7.jpg')"><img src="hình ảnh/hdmv/z6206576760958_008_0052c01b824c4ef42cabe97d09a8fab7.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_009_6fab9bfde7e4a1069d3234c40481fa65.jpg')"><img src="hình ảnh/hdmv/z6206576760958_009_6fab9bfde7e4a1069d3234c40481fa65.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_010_829a919b61e082bd6617aa306d2cfcbc.jpg')"><img src="hình ảnh/hdmv/z6206576760958_010_829a919b61e082bd6617aa306d2cfcbc.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_011_1e2c948a06c872f828060d1cedfe19fc.jpg')"><img src="hình ảnh/hdmv/z6206576760958_011_1e2c948a06c872f828060d1cedfe19fc.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_012_6a6da541c4232c558950ec6fc67a1fd2.jpg')"><img src="hình ảnh/hdmv/z6206576760958_012_6a6da541c4232c558950ec6fc67a1fd2.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_013_3887bc9174af77e5e6bf10b02b3c5b18.jpg')"><img src="hình ảnh/hdmv/z6206576760958_013_3887bc9174af77e5e6bf10b02b3c5b18.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_014_37e9e034beb4e36823c1ed008f25b77f.jpg')"><img src="hình ảnh/hdmv/z6206576760958_014_37e9e034beb4e36823c1ed008f25b77f.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304105539_85e1eaf08064ef12ee29c4764302ea7c.jpg')"><img src="hình ảnh/hdmv/z6397304105539_85e1eaf08064ef12ee29c4764302ea7c.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304110579_2f0a29cc6cc26c11afd538bb8532bb4e.jpg')"><img src="hình ảnh/hdmv/z6397304110579_2f0a29cc6cc26c11afd538bb8532bb4e.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304113833_e3559582e35b86eb145437a11a417b3a.jpg')"><img src="hình ảnh/hdmv/z6397304113833_e3559582e35b86eb145437a11a417b3a.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304118438_240f31ef5dcd74c3ca16d90914c0bb7d.jpg')"><img src="hình ảnh/hdmv/z6397304118438_240f31ef5dcd74c3ca16d90914c0bb7d.jpg" alt="" loading="lazy"></div>
-<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg')"><img src="hình ảnh/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg" alt="" loading="lazy"></div>
+    <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg')"><img src="images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg')"><img src="images/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_002_2d80a86a26386f0a6ce696b51b5e2198.jpg')"><img src="images/hdmv/z6206576760958_002_2d80a86a26386f0a6ce696b51b5e2198.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_003_8765abc84b9a826e4bc5afaee8fb642f.jpg')"><img src="images/hdmv/z6206576760958_003_8765abc84b9a826e4bc5afaee8fb642f.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_004_abd1648b88938399af28aebad4b82bfd.jpg')"><img src="images/hdmv/z6206576760958_004_abd1648b88938399af28aebad4b82bfd.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_005_604ee136fc8fc25ed59812839b4f3691.jpg')"><img src="images/hdmv/z6206576760958_005_604ee136fc8fc25ed59812839b4f3691.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_006_932645fbf1362894982ba93b81f8794e.jpg')"><img src="images/hdmv/z6206576760958_006_932645fbf1362894982ba93b81f8794e.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_007_df79c10c38eb69a96fbd93d76868b262.jpg')"><img src="images/hdmv/z6206576760958_007_df79c10c38eb69a96fbd93d76868b262.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_008_0052c01b824c4ef42cabe97d09a8fab7.jpg')"><img src="images/hdmv/z6206576760958_008_0052c01b824c4ef42cabe97d09a8fab7.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_009_6fab9bfde7e4a1069d3234c40481fa65.jpg')"><img src="images/hdmv/z6206576760958_009_6fab9bfde7e4a1069d3234c40481fa65.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_010_829a919b61e082bd6617aa306d2cfcbc.jpg')"><img src="images/hdmv/z6206576760958_010_829a919b61e082bd6617aa306d2cfcbc.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_011_1e2c948a06c872f828060d1cedfe19fc.jpg')"><img src="images/hdmv/z6206576760958_011_1e2c948a06c872f828060d1cedfe19fc.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_012_6a6da541c4232c558950ec6fc67a1fd2.jpg')"><img src="images/hdmv/z6206576760958_012_6a6da541c4232c558950ec6fc67a1fd2.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_013_3887bc9174af77e5e6bf10b02b3c5b18.jpg')"><img src="images/hdmv/z6206576760958_013_3887bc9174af77e5e6bf10b02b3c5b18.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_014_37e9e034beb4e36823c1ed008f25b77f.jpg')"><img src="images/hdmv/z6206576760958_014_37e9e034beb4e36823c1ed008f25b77f.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304105539_85e1eaf08064ef12ee29c4764302ea7c.jpg')"><img src="images/hdmv/z6397304105539_85e1eaf08064ef12ee29c4764302ea7c.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304110579_2f0a29cc6cc26c11afd538bb8532bb4e.jpg')"><img src="images/hdmv/z6397304110579_2f0a29cc6cc26c11afd538bb8532bb4e.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304113833_e3559582e35b86eb145437a11a417b3a.jpg')"><img src="images/hdmv/z6397304113833_e3559582e35b86eb145437a11a417b3a.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304118438_240f31ef5dcd74c3ca16d90914c0bb7d.jpg')"><img src="images/hdmv/z6397304118438_240f31ef5dcd74c3ca16d90914c0bb7d.jpg" alt="" loading="lazy"></div>
+<div class="photo-item" onclick="openLightbox('images/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg')"><img src="images/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
 </section>
@@ -1133,6 +1164,22 @@ const observer = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.3});
 document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+<script>
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('active');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('active');
+}
+// Đóng sidebar khi click nav item trên mobile
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 768) closeSidebar();
+  });
+});
 </script>
 </body>
 </html>

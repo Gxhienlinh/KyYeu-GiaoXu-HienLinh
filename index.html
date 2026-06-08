@@ -1174,14 +1174,14 @@
 <h3>NHỮNG TẤM LÒNG SẺ CHIA</h3>
 <p>Ban Trật tự được thành lập ngày 12/08/2013.</p>
 <p>Ban gồm có bảy thành viên.</p>
-<h4>Anh Giuse Nguyễn Thành Sơn</h4>
-<h4>Anh Phaolô Huỳnh Quốc Nam</h4>
-<h4>Anh Giuse Nguyễn Ngọc Lân</h4>
-<h4>Giuse Võ Minh Hòa</h4>
-<h4>Anh Phêrô Hoàng Văn Hậu</h4>
-<h4>Anh Maccô Phạm Văn Dương</h4>
-<h4>Anh Phêrô Lê Anh Dũng</h4>
-<h4>Anh Gioan Baotixita Huỳnh Ngọc Ân</h4>
+
+
+
+
+
+
+
+
 <p>Công việc của Ban Trật tự là sắp xếp và quản lý xe, hướng dẫn giáo dân để xe đúng nơi qui định để bảo đảm an toàn cho giáo dân khi tham dự Thánh Lễ.</p>
 <p>Diện tích khuôn viên nhà xứ rất hạn hẹp nhưng qua sự sắp xếp của Cha Chánh xứ, của Hội đồng mục vụ luôn tạo điều kiện để Ban Trật tự được thuận lợi trong công việc trông coi xe và giữ trật tự cho giáo xứ.</p>
 <p>Từ ngày thành lập đến nay, các anh em Ban Trật tự đã làm việc rất vui vẻ, nhiệt tình. Tất cả anh em Ban Trật Tự chúng tôi quyết tâm sẽ luôn cố gắng làm công việc ngày càng tốt hơn để được phục vụ nhà Chúa bằng tất cả tâm tình của mình.</p></div>
@@ -1261,4 +1261,16 @@ function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('active');
 }
-funct
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('active');
+}
+// Đóng sidebar khi click nav item trên mobile
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 768) closeSidebar();
+  });
+});
+</script>
+</body>
+</html>

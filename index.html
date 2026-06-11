@@ -6,394 +6,489 @@
 <title>Kỷ Yếu Giáo Xứ Hiển Linh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:wght@400;500&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e8d5a0;
-    --gold-dark: #8B6914;
-    --navy: #0e1e35;
-    --navy-mid: #1a3352;
-    --cream: #faf6ee;
-    --cream-dark: #f0e8d8;
-    --text: #2c1f0e;
-    --text-light: #5c4a2a;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'EB Garamond', Georgia, serif;
-    background: var(--cream);
-    color: var(--text);
-    display: flex;
-    min-height: 100vh;
-  }
-
-  /* Sidebar */
-  .sidebar {
-    width: 280px;
-    min-height: 100vh;
-    background: var(--navy);
-    position: fixed;
-    top: 0; left: 0;
-    overflow-y: auto;
-    z-index: 100;
-    border-right: 2px solid var(--gold-dark);
-  }
-
-  .sidebar-header {
-    padding: 2rem 1.5rem;
-    text-align: center;
-    background: linear-gradient(180deg, #0a1525 0%, var(--navy) 100%);
-    border-bottom: 1px solid var(--gold-dark);
-  }
-
-  .sidebar-header .cross {
-    font-size: 2rem;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  .sidebar-header h1 {
-    font-family: Georgia, 'Playfair Display', 'Noto Serif', serif;
-    color: var(--gold);
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-
-    line-height: 1.6;
-  }
-
-  .sidebar-header p {
-    color: var(--gold-light);
-    font-size: 0.75rem;
-    margin-top: 0.4rem;
-    opacity: 0.8;
-  }
-
-  .nav-item {
-    display: block;
-    padding: 0.6rem 1.5rem;
-    color: var(--gold-light);
-    text-decoration: none;
-    font-size: 0.82rem;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    transition: all 0.2s;
-    line-height: 1.4;
-  }
-
-  .nav-item:hover {
-    background: rgba(201,168,76,0.12);
-    color: var(--gold);
-    padding-left: 2rem;
-  }
-
-  /* Main content */
-  .main {
-    margin-left: 280px;
-    flex: 1;
-  }
-
-  /* Hero */
-  .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #1a3a2a 100%);
-    padding: 5rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  .hero-ornament {
-    color: var(--gold);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    letter-spacing: 0.5em;
-  }
-
-  .hero h1 {
-    font-family: Georgia, 'Playfair Display', 'Noto Serif', serif;
-    color: var(--gold);
-    font-size: 2.8rem;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-  }
-
-  .hero .subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--gold-light);
-    font-size: 1.3rem;
-    font-style: italic;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero .address {
-    color: rgba(232,213,160,0.7);
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-  }
-
-  .anniversary-badge {
-    display: inline-block;
-    border: 2px solid var(--gold);
-    padding: 0.5rem 2rem;
-    margin: 1.5rem 0;
-    font-family: Georgia, 'Playfair Display', 'Noto Serif', serif;
-    color: var(--gold);
-    font-size: 0.9rem;
-    letter-spacing: 0.2em;
-  }
-
-  /* Sections */
-  .section {
-    padding: 3rem 4rem;
-    border-bottom: 1px solid var(--cream-dark);
-  }
-
-  .section:nth-child(even) {
-    background: rgba(240,232,216,0.4);
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding-left: 1.5rem;
-    border-left: 4px solid var(--gold);
-  }
-
-  .section-icon {
-    font-size: 2rem;
-    min-width: 2.5rem;
-  }
-
-  .section-header h2 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.4rem;
-    color: var(--navy);
-    letter-spacing: 0.02em;
-    line-height: 1.3;
-  }
-
-  .section-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .section-text h3 {
-    font-family: Georgia, 'Playfair Display', 'Noto Serif', serif;
-    font-size: 1rem;
-    color: var(--gold-dark);
-    letter-spacing: 0.1em;
-    margin: 1.5rem 0 0.5rem;
-
-  }
-
-  .priest-card {
-  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(14,30,53,0.05) 100%);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-left: 4px solid var(--gold);
-  padding: 1.2rem 1.5rem;
-  margin: 1rem 0;
-  border-radius: 2px;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#8a6e2f;
+  --gold2:#b8922a;
+  --gold-bg:#fdf8ee;
+  --red:#c0392b;
+  --ink:#1a1a18;
+  --ink2:#4a4a46;
+  --ink3:#9a9a95;
+  --line:#ebebе6;
+  --bg:#ffffff;
+  --bg2:#f9f9f7;
+  --max:1200px;
+  --ease:.35s cubic-bezier(.25,.46,.45,.94);
 }
-.priest-card h4 {
-  font-family: Georgia, 'Playfair Display', 'Noto Serif', serif;
-  font-size: 1rem;
-  color: var(--navy);
-  margin-bottom: 0.3rem;
+html{scroll-behavior:smooth}
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;
+  background:linear-gradient(90deg,var(--gold2),var(--gold));
+  z-index:9999;width:0%;transition:width .1s linear;
 }
-.priest-card p {
-  margin: 0.2rem 0;
-  font-size: 0.95rem;
-  color: var(--text-light);
-  line-height: 1.6;
+body{font-family:'Inter','Noto Serif',sans-serif;background:var(--bg2);color:var(--ink);line-height:1.7;font-size:15px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--gold2)}
+
+/* ===== TOP BAR ===== */
+.topbar{
+  background:var(--bg);color:var(--ink3);
+  font-size:.7rem;letter-spacing:.05em;
+  padding:.4rem 0;border-bottom:1px solid var(--line);
 }
-.council-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0.5rem 0 1.5rem;
-  font-size: 0.95rem;
+.topbar-inner{
+  max-width:var(--max);margin:0 auto;padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
 }
-.council-table td {
-  padding: 0.4rem 0.8rem;
-  border-bottom: 1px solid rgba(201,168,76,0.15);
-  line-height: 1.6;
+.topbar-date{color:var(--ink3)}
+.topbar-links{display:flex;gap:1.2rem}
+.topbar-links a{color:var(--ink3);transition:color .2s}
+.topbar-links a:hover{color:var(--gold2)}
+
+/* ===== HEADER ===== */
+.site-header{
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:200;
 }
-.council-table td:first-child {
-  width: 60%;
-  color: var(--text);
+.header-main{
+  max-width:var(--max);margin:0 auto;padding:.8rem 1.5rem;
+  display:flex;align-items:center;gap:1.5rem;
 }
-.council-table td:last-child {
-  color: var(--gold-dark);
-  font-style: italic;
+.header-logo{
+  display:flex;align-items:center;gap:.8rem;
+  flex-shrink:0;
 }
-.section-text h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--navy-mid);
-    margin: 1rem 0 0.3rem;
-  }
+.logo-cross{font-size:1.4rem;color:var(--gold2)}
+.logo-text{
+  font-family:'Lora','Noto Serif',serif;
+  line-height:1.2;
+}
+.logo-text strong{
+  display:block;font-size:1rem;font-weight:600;
+  color:var(--ink);letter-spacing:.04em;
+}
+.logo-text span{
+  font-size:.68rem;color:var(--ink3);
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.header-rule{flex:1;height:1px;background:var(--line)}
+.header-right{
+  display:flex;align-items:center;gap:1rem;
+  font-size:.75rem;color:var(--ink3);flex-shrink:0;
+}
 
-  .section-text p {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--text);
-    margin-bottom: 0.8rem;
-    text-align: justify;
-  }
+/* ===== NAV ===== */
+.site-nav{
+  background:var(--bg);
+  border-bottom:2px solid var(--gold2);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;padding:0 1.5rem;
+  display:flex;align-items:center;gap:0;overflow-x:auto;
+}
+.nav-inner::-webkit-scrollbar{height:0}
+.nav-link{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.7rem 1rem;font-size:.8rem;font-weight:500;
+  color:var(--ink2);white-space:nowrap;
+  border-bottom:2px solid transparent;margin-bottom:-2px;
+  transition:color .2s,border-color .2s;
+}
+.nav-link:hover{color:var(--gold2);border-bottom-color:var(--gold2)}
+.nav-link.act{color:var(--gold2);border-bottom-color:var(--gold2)}
+.nav-link-icon{font-size:.8rem;opacity:.6}
+.ham{
+  display:none;background:none;border:none;cursor:pointer;
+  padding:.5rem;margin-right:.5rem;
+  flex-direction:column;gap:4px;
+}
+.ham span{display:block;width:20px;height:1.5px;background:var(--ink)}
 
-  /* Photo grid */
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 8px;
-    margin-top: 1rem;
-  }
+/* ===== LAYOUT ===== */
+.page-body{
+  max-width:var(--max);margin:0 auto;
+  padding:2rem 1.5rem;
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:2.5rem;
+}
 
-  .photo-item {
-    aspect-ratio: 1;
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 2px;
-    border: 1px solid var(--cream-dark);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+/* ===== HERO ARTICLE (top featured) ===== */
+.hero-feature{
+  background:linear-gradient(160deg,#fefdfb 0%,#fdf6e7 50%,#fefdfb 100%);
+  color:var(--ink);
+  padding:3.5rem 2rem 2.5rem;
+  text-align:center;
+  border-bottom:3px solid var(--gold2);
+  border-top:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.hero-feature::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(184,146,42,.12) 1px,transparent 1px);
+  background-size:28px 28px;
+  opacity:.5;
+}
+.hero-feature-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.hf-tag{
+  display:inline-block;font-size:.65rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(138,110,47,.3);
+  padding:.3rem .9rem;border-radius:2px;margin-bottom:1.2rem;
+  background:rgba(138,110,47,.04);
+}
+.hf-cross{font-size:1.3rem;color:var(--gold);display:block;margin-bottom:.6rem;animation:fl 4s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hf-title{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:600;color:var(--ink);line-height:1.2;
+  letter-spacing:.04em;margin-bottom:.4rem;
+}
+.hf-sub{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:1rem;font-style:italic;
+  color:rgba(184,146,42,.85);margin-bottom:1.2rem;
+}
+.hf-divider{display:flex;align-items:center;gap:.8rem;justify-content:center;margin:.8rem 0}
+.hf-line{width:40px;height:1px}
+.hf-line:first-child{background:linear-gradient(90deg,transparent,var(--gold2))}
+.hf-line:last-child{background:linear-gradient(90deg,var(--gold2),transparent)}
+.hf-dot{color:var(--gold2);font-size:.5rem}
+.hf-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.75rem;font-weight:500;letter-spacing:.08em;
+  border:1px solid rgba(184,146,42,.4);
+  color:rgba(184,146,42,.9);padding:.5rem 1.2rem;
+  border-radius:2px;background:rgba(184,146,42,.06);
+  margin-bottom:.8rem;
+}
+.hf-addr{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.04em;margin-bottom:1.2rem}
+.hf-stats{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:1.5rem}
+.hf-stat{text-align:center}
+.hf-stat strong{display:block;font-family:'Lora','Noto Serif',serif;font-size:1.6rem;font-weight:600;color:var(--gold);line-height:1}
+.hf-stat span{font-size:.65rem;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem;display:block}
+.hf-stat-sep{color:var(--line);font-size:1.2rem}
 
-  .photo-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    z-index: 1;
-    position: relative;
-  }
+/* ===== MAIN CONTENT AREA ===== */
+.main-col{min-width:0}
 
-  .photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+/* ===== SECTION BLOCK ===== */
+.section{
+  background:var(--bg);border:1px solid var(--line);
+  margin-bottom:1.5rem;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.section.vis{opacity:1;transform:none}
 
-  /* Lightbox */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+.section-header{
+  display:flex;align-items:center;gap:.8rem;
+  padding:1rem 1.4rem;
+  border-bottom:1px solid var(--line);
+  background:var(--bg2);
+}
+.sh-icon{font-size:1rem}
+.section-header h2{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:1.05rem;font-weight:600;color:var(--ink);
+  letter-spacing:.01em;
+}
+.section-header h2::after{
+  content:'';display:block;width:24px;height:2px;
+  background:var(--gold2);margin-top:.3rem;border-radius:1px;
+}
 
-  .lightbox.active {
-    display: flex;
-  }
+.section-content{padding:1.4rem 1.6rem;display:grid;gap:1.8rem}
+.section-content.has-img{grid-template-columns:1fr 1fr}
+@media(max-width:700px){.section-content.has-img{grid-template-columns:1fr}}
 
-  .lightbox img {
-    max-width: 90vw;
-    max-height: 85vh;
-    object-fit: contain;
-    border: 1px solid rgba(201,168,76,0.3);
-  }
+.section-text h3{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:.85rem;font-weight:600;color:var(--gold);
+  letter-spacing:.08em;text-transform:uppercase;
+  margin:1.5rem 0 .5rem;padding-bottom:.4rem;
+  border-bottom:1px solid var(--line);
+}
+.section-text h3:first-child{margin-top:0}
+.section-text h4{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:.9rem;font-weight:600;color:var(--ink);
+  margin:1rem 0 .3rem;font-style:italic;
+}
+.section-text p{font-size:.9rem;color:var(--ink2);line-height:1.85;margin-bottom:.7rem}
+.section-text em{color:var(--gold);font-style:italic}
+.section-text strong{font-weight:500;color:var(--ink)}
 
-  .lightbox-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    color: var(--gold);
-    font-size: 2rem;
-    cursor: pointer;
-    font-family: serif;
-    line-height: 1;
-  }
+/* PRIEST CARD */
+.priest-card{
+  background:var(--bg2);border-left:2px solid var(--gold2);
+  padding:1rem 1.2rem;margin:.6rem 0;
+  border-radius:0 4px 4px 0;
+}
+.priest-card h4{font-family:'Lora','Noto Serif',serif;font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;font-style:normal}
+.priest-card p{font-size:.84rem;color:var(--ink2);margin-bottom:.2rem;line-height:1.55}
 
-  /* Footer */
-  .footer {
-    background: var(--navy);
-    color: var(--gold-light);
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.85rem;
-  }
+/* PHOTO GRID */
+.photo-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:.5rem;
+}
+.photo-item{aspect-ratio:4/3;overflow:hidden;border-radius:3px;cursor:pointer;background:var(--line)}
+.photo-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
+.photo-item:hover img{transform:scale(1.05)}
 
-  .footer .cross-footer {
-    font-size: 1.5rem;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+/* COUNCIL TABLE */
+.council-table{width:100%;border-collapse:collapse;font-size:.84rem;margin:.4rem 0 1rem}
+.council-table td{padding:.4rem .6rem;border-bottom:1px solid var(--line);color:var(--ink2);line-height:1.5}
+.council-table td:first-child{color:var(--ink);font-weight:500}
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .sidebar { width: 100%; min-height: auto; position: relative; }
-    .main { margin-left: 0; }
-    .hero { padding: 3rem 1.5rem; }
-    .hero h1 { font-size: 1.8rem; }
-    .section { padding: 2rem 1.5rem; }
-    .photo-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-  }
+/* ===== SIDEBAR ===== */
+.sidebar-col{min-width:0}
+.sidebar-sticky{position:sticky;top:70px}
+
+.sb-widget{
+  background:var(--bg);border:1px solid var(--line);
+  margin-bottom:1.5rem;
+}
+.sb-head{
+  padding:.7rem 1rem;border-bottom:2px solid var(--gold2);
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--gold-bg);
+}
+.sb-head a{font-size:.68rem;color:var(--ink3);font-weight:400;letter-spacing:.04em}
+.sb-head a:hover{color:var(--gold2)}
+
+/* TIN TỨC WIDGET */
+.news-item{
+  padding:.9rem 1rem;border-bottom:1px solid var(--line);
+  display:flex;gap:.7rem;align-items:flex-start;
+  transition:background .15s;
+}
+.news-item:last-child{border-bottom:none}
+.news-item:hover{background:var(--bg2)}
+.news-num{
+  font-size:.75rem;font-weight:600;color:var(--gold2);
+  flex-shrink:0;width:18px;text-align:right;margin-top:.1rem;
+}
+.news-body{flex:1;min-width:0}
+.news-cat{
+  font-size:.62rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--red);margin-bottom:.2rem;
+}
+.news-title{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:.82rem;font-weight:500;color:var(--ink);
+  line-height:1.4;margin-bottom:.2rem;
+}
+.news-title:hover{color:var(--gold2)}
+.news-time{font-size:.67rem;color:var(--ink3)}
+.news-img{
+  width:64px;height:48px;border-radius:2px;
+  object-fit:cover;flex-shrink:0;
+}
+.news-add-btn{
+  display:block;width:100%;padding:.6rem 1rem;
+  text-align:center;font-size:.75rem;color:var(--ink3);
+  border-top:1px solid var(--line);
+  transition:background .15s,color .15s;cursor:pointer;
+}
+.news-add-btn:hover{background:var(--gold-bg);color:var(--gold)}
+.news-add-form{
+  padding:.8rem 1rem;border-top:1px solid var(--line);
+  display:none;
+}
+.news-add-form.on{display:block}
+.news-add-form input,.news-add-form textarea,.news-add-form select{
+  width:100%;border:1px solid var(--line);
+  padding:.45rem .6rem;font-size:.8rem;
+  font-family:'Inter',sans-serif;color:var(--ink);
+  background:var(--bg);border-radius:2px;
+  margin-bottom:.5rem;resize:vertical;
+}
+.news-add-form input:focus,.news-add-form textarea:focus,.news-add-form select:focus{
+  outline:none;border-color:var(--gold2);
+}
+.news-add-form label{font-size:.72rem;color:var(--ink3);display:block;margin-bottom:.2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.btn-submit{
+  width:100%;padding:.5rem;
+  background:var(--ink);color:#fff;
+  border:none;border-radius:2px;
+  font-size:.8rem;font-weight:500;cursor:pointer;
+  font-family:'Inter',sans-serif;
+  transition:background .2s;
+}
+.btn-submit:hover{background:var(--gold)}
+.btn-cancel{
+  width:100%;padding:.4rem;margin-top:.3rem;
+  background:none;color:var(--ink3);
+  border:1px solid var(--line);border-radius:2px;
+  font-size:.75rem;cursor:pointer;
+  font-family:'Inter',sans-serif;
+}
+
+/* DAILY READING WIDGET */
+.reading-box{padding:1rem}
+.reading-date{
+  font-size:.68rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:.5rem;
+}
+.reading-title{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:.95rem;font-weight:600;color:var(--ink);
+  margin-bottom:.8rem;
+}
+.reading-ref{
+  font-size:.78rem;font-weight:600;color:var(--ink2);
+  margin-bottom:.4rem;letter-spacing:.03em;
+}
+.reading-text{
+  font-size:.82rem;color:var(--ink2);line-height:1.8;
+  border-left:2px solid var(--line);padding-left:.8rem;
+  font-style:italic;
+  display:-webkit-box;-webkit-line-clamp:6;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
+
+/* NAV SECTION LIST */
+.section-nav-list{padding:.5rem 0}
+.snl-item{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.55rem 1rem;
+  font-size:.8rem;color:var(--ink2);
+  border-left:2px solid transparent;
+  transition:all .2s;cursor:pointer;
+}
+.snl-item:hover{color:var(--ink);background:var(--bg2);border-left-color:var(--gold2);padding-left:1.3rem}
+.snl-item.act{color:var(--gold2);background:var(--gold-bg);border-left-color:var(--gold2)}
+.snl-icon{font-size:.8rem;opacity:.6;width:16px;text-align:center}
+.snl-group{
+  font-size:.62rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
+  padding:.8rem 1rem .2rem;
+}
+
+/* ===== LIGHTBOX ===== */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:900;align-items:center;justify-content:center;cursor:pointer}
+.lb.on{display:flex;animation:fi .2s ease}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.lb img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:2px}
+.lb-x{position:absolute;top:1rem;right:1rem;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08)}
+.lb-x:hover{background:rgba(255,255,255,.18)}
+
+/* BACK TO TOP */
+.btt{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--bg);color:var(--gold);
+  border:1px solid var(--gold2);
+  box-shadow:0 2px 12px rgba(0,0,0,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;cursor:pointer;text-decoration:none;
+  opacity:0;transform:translateY(6px);
+  transition:all .3s;z-index:100;
+}
+.btt.on{opacity:1;transform:none}
+.btt:hover{background:var(--gold2);color:#fff;border-color:var(--gold2)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .page-body{grid-template-columns:1fr;padding:1.2rem 1rem}
+  .ham{display:flex}
+  .site-nav .nav-inner{overflow-x:auto}
+  .topbar-links{display:none}
+}
+@media(max-width:600px){
+  .hero-feature{padding:2.5rem 1.2rem 2rem}
+  .hf-title{font-size:1.8rem}
+  .header-main{padding:.6rem 1rem}
+}
 </style>
 </head>
 <body>
 
-<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <span class="cross">✝</span>
-    <h1>KỶ YẾU<br>GIÁO XỨ<br>HIỂN LINH</h1>
-    <p>Quận Bình Thạnh · TP.HCM</p>
+<!-- TOP BAR -->
+<div id="progress-bar"></div>
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-date" id="todayDate"></span>
+    <div class="topbar-links">
+      <a href="#lich-su">Lịch Sử</a>
+      <a href="#ban-tv">Ban Thường Vụ</a>
+      <a href="#cecilia">Ca Đoàn</a>
+      <a href="#caritas">Caritas</a>
+    </div>
   </div>
-  <a href="#lich-su" class="nav-item">⛪ Lịch Sử Giáo Xứ</a>
-<a href="#ban-tv" class="nav-item">✝️ Ban Thường Vụ HĐMVX</a>
-<a href="#khu-1" class="nav-item">🏘️ Giáo Khu I — Thánh Cả Giuse</a>
-<a href="#khu-2" class="nav-item">🏘️ Giáo Khu II — Thánh Phêrô &amp; Phaolô</a>
-<a href="#khu-3" class="nav-item">🏘️ Giáo Khu III — Thánh Gioan Baotixita</a>
-<a href="#khu-4" class="nav-item">🏘️ Giáo Khu IV — Thánh Phanxicô Xaviê</a>
-<a href="#cac-so" class="nav-item">🙏 Dòng Tu Đaminh Bà Rịa</a>
-<a href="#thanh-tam" class="nav-item">❤️ Hội Thánh Tâm</a>
-<a href="#hien-mau" class="nav-item">👩 Hội Hiền Mẫu</a>
-<a href="#daminh" class="nav-item">✠ Huynh Đoàn GD Đaminh</a>
-<a href="#legio" class="nav-item">🌹 Legio Mariae</a>
-<a href="#cecilia" class="nav-item">🎵 Ca Đoàn Cecilia</a>
-<a href="#gioi-tre-ca" class="nav-item">🎶 Ca Đoàn Giới Trẻ</a>
-<a href="#goretti" class="nav-item">🎼 Ca Đoàn Maria Goretti</a>
-<a href="#phuc-vu" class="nav-item">🕯️ Ban Phục Vụ Thánh Lễ</a>
-<a href="#le-sinh" class="nav-item">⚜️ Ban Lễ Sinh</a>
-<a href="#lcttx" class="nav-item">💖 Ban Lòng Chúa Thương Xót</a>
-<a href="#caritas" class="nav-item">🤝 Ban Caritas</a>
-<a href="#gioi-tre" class="nav-item">🌟 Ban Giới Trẻ</a>
-<a href="#trat-tu" class="nav-item">🛡️ Ban Trật Tự</a>
-<a href="#hdmv" class="nav-item">📷 Hình Ảnh Hoạt Động</a>
+</div>
 
-</nav>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-main">
+    <div class="header-logo">
+      <span class="logo-cross">✝</span>
+      <div class="logo-text">
+        <strong>Giáo Xứ Hiển Linh</strong>
+        <span>Kỷ Yếu · 50 Năm Thành Lập</span>
+      </div>
+    </div>
+    <div class="header-rule"></div>
+    <div class="header-right">
+      <span>Quận Bình Thạnh · TP.HCM</span>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <button class="ham" id="ham"><span></span><span></span><span></span></button>
+      <a href="#lich-su" class="nav-link"><span class="nav-link-icon">⛪</span>Lịch Sử</a>
+      <a href="#ban-tv" class="nav-link"><span class="nav-link-icon">✝️</span>Ban Thường Vụ</a>
+      <a href="#khu-1" class="nav-link"><span class="nav-link-icon">🏘️</span>Giáo Khu</a>
+      <a href="#cac-so" class="nav-link"><span class="nav-link-icon">🙏</span>Hội Đoàn</a>
+      <a href="#cecilia" class="nav-link"><span class="nav-link-icon">🎵</span>Ca Đoàn</a>
+      <a href="#phuc-vu" class="nav-link"><span class="nav-link-icon">🕯️</span>Ban Phục Vụ</a>
+      <a href="#caritas" class="nav-link"><span class="nav-link-icon">🤝</span>Caritas</a>
+      <a href="#hdmv" class="nav-link"><span class="nav-link-icon">📷</span>Hình Ảnh</a>
+    </div>
+  </nav>
+</header>
 
-<div class="main">
-  <header class="hero">
-    <div class="hero-ornament">✦ ✦ ✦</div>
-    <h1>GIÁO XỨ HIỂN LINH</h1>
-    <div class="subtitle">Kỷ Yếu Mừng Kim Khánh</div>
-    <div class="anniversary-badge">✦ NĂM THÁNH 50 NĂM THÀNH LẬP ✦</div>
-    <div class="address">Số 5GH Ngô Tất Tố, Phường 22, Quận Bình Thạnh, TP.HCM</div>
-  </header>
+<!-- HERO -->
+<div class="hero-feature">
+  <div class="hero-feature-inner">
+    <span class="hf-tag">✦ Năm Thánh · 1969 – 2019 ✦</span>
+    <span class="hf-cross">✝</span>
+    <h1 class="hf-title">GIÁO XỨ HIỂN LINH</h1>
+    <p class="hf-sub">Kỷ Yếu Mừng Kim Khánh</p>
+    <div class="hf-divider"><div class="hf-line"></div><span class="hf-dot">✦</span><div class="hf-line"></div></div>
+    <div class="hf-badge">✦ NĂM THÁNH 50 NĂM THÀNH LẬP ✦</div>
+    <p class="hf-addr">Số 5GH Ngô Tất Tố, Phường 22, Quận Bình Thạnh, TP.HCM</p>
+    <div class="hf-stats">
+      <div class="hf-stat"><strong>50</strong><span>Năm thành lập</span></div>
+      <div class="hf-stat-sep">·</div>
+      <div class="hf-stat"><strong>21</strong><span>Mục trong kỷ yếu</span></div>
+      <div class="hf-stat-sep">·</div>
+      <div class="hf-stat"><strong>1968</strong><span>Năm thành lập</span></div>
+    </div>
+  </div>
+</div>
 
-  
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- MAIN COLUMN: all sections -->
+  <main class="main-col" id="mainCol">
 <section id="lich-su" class="section">
-  <div class="section-header" style="border-left-color: #8B6914">
-    <span class="section-icon">⛪</span>
-    <h2>Lịch Sử Giáo Xứ</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">⛪</span><h2>Lịch Sử Giáo Xứ</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO XỨ HIỂN LINH</h3>
 <h4>Số 5GH Ngô Tất Tố, Phường 22, Quận Bình Thạnh, Tp.HCM</h4>
@@ -470,10 +565,7 @@
 </section>
 
 <section id="ban-tv" class="section">
-  <div class="section-header" style="border-left-color: #1a4a6e">
-    <span class="section-icon">✝️</span>
-    <h2>Ban Thường Vụ HĐMVX</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">✝️</span><h2>Ban Thường Vụ HĐMVX</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>CÁC LINH MỤC VÀ HỘI ĐỒNG MỤC VỤ GIÁO XỨ QUA CÁC NHIỆM KỲ</h3>
 <h3>1.CÁC LINH MỤC PHỤC VỤ GIÁO XỨ HIỂN LINH:</h3>
@@ -527,10 +619,7 @@
 </section>
 
 <section id="khu-1" class="section">
-  <div class="section-header" style="border-left-color: #2d5a27">
-    <span class="section-icon">🏘️</span>
-    <h2>Giáo Khu I — Thánh Cả Giuse</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu I — Thánh Cả Giuse</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU I</h3>
 <p>Thánh Bổn Mạng: Thánh Cả Giuse.</p>
@@ -567,10 +656,7 @@
 </section>
 
 <section id="khu-2" class="section">
-  <div class="section-header" style="border-left-color: #2d5a27">
-    <span class="section-icon">🏘️</span>
-    <h2>Giáo Khu II — Thánh Phêrô &amp; Phaolô</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu II — Thánh Phêrô &amp; Phaolô</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU II</h3>
 <h4>Thánh Bổn Mạng: Thánh Phêrô và Phaolô</h4>
@@ -613,10 +699,7 @@
 </section>
 
 <section id="khu-3" class="section">
-  <div class="section-header" style="border-left-color: #2d5a27">
-    <span class="section-icon">🏘️</span>
-    <h2>Giáo Khu III — Thánh Gioan Baotixita</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu III — Thánh Gioan Baotixita</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU III</h3>
 <h4>Thánh Bổn Mạng: Thánh Gioan Baotixita</h4>
@@ -659,10 +742,7 @@
 </section>
 
 <section id="khu-4" class="section">
-  <div class="section-header" style="border-left-color: #2d5a27">
-    <span class="section-icon">🏘️</span>
-    <h2>Giáo Khu IV — Thánh Phanxicô Xaviê</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu IV — Thánh Phanxicô Xaviê</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU IV</h3>
 <h4>Thánh Bổn Mạng: Thánh Phanxicô Xaviê</h4>
@@ -703,10 +783,7 @@
 </section>
 
 <section id="cac-so" class="section">
-  <div class="section-header" style="border-left-color: #5a2d82">
-    <span class="section-icon">🙏</span>
-    <h2>Dòng Tu Đaminh Bà Rịa</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🙏</span><h2>Dòng Tu Đaminh Bà Rịa</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>DÒNG TU ĐAMINH BÀ RỊA VŨNG TÀU</h3>
 <h3>TU XÁ TÊRÊSA</h3>
@@ -734,10 +811,7 @@
 </section>
 
 <section id="thanh-tam" class="section">
-  <div class="section-header" style="border-left-color: #8B1a1a">
-    <span class="section-icon">❤️</span>
-    <h2>Hội Thánh Tâm</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">❤️</span><h2>Hội Thánh Tâm</h2></div>
   <div class="section-content">
     <div class="section-text">
         <h3>GIA ĐÌNH PHẠT TẠ THÁNH TÂM</h3>
@@ -774,10 +848,7 @@
 </section>
 
 <section id="hien-mau" class="section">
-  <div class="section-header" style="border-left-color: #6e2d6e">
-    <span class="section-icon">👩</span>
-    <h2>Hội Hiền Mẫu</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">👩</span><h2>Hội Hiền Mẫu</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>HỘI HIỀN MẪU</h3>
 <h3>THEO CHÂN MẸ SẦU BI</h3>
@@ -808,10 +879,7 @@
 </section>
 
 <section id="daminh" class="section">
-  <div class="section-header" style="border-left-color: #1a4a6e">
-    <span class="section-icon">✠</span>
-    <h2>Huynh Đoàn GD Đaminh</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">✠</span><h2>Huynh Đoàn GD Đaminh</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>HUYNH ĐOÀN GIÁO DÂN ĐAMINH</h3>
 <h4>I/ Tổ chức và hoạt động</h4>
@@ -863,10 +931,7 @@
 </section>
 
 <section id="legio" class="section">
-  <div class="section-header" style="border-left-color: #6e1a3a">
-    <span class="section-icon">🌹</span>
-    <h2>Legio Mariae</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🌹</span><h2>Legio Mariae</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>LEGIO MARIAE</h3>
 <h3>CÙNG MẸ RA KHƠI</h3>
@@ -904,10 +969,7 @@
 </section>
 
 <section id="cecilia" class="section">
-  <div class="section-header" style="border-left-color: #1a6e4a">
-    <span class="section-icon">🎵</span>
-    <h2>Ca Đoàn Cecilia</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🎵</span><h2>Ca Đoàn Cecilia</h2></div>
   <div class="section-content">
     <div class="section-text">
         <h3>CA ĐOÀN CECILIA</h3>
@@ -928,10 +990,7 @@
 </section>
 
 <section id="gioi-tre-ca" class="section">
-  <div class="section-header" style="border-left-color: #1a6e4a">
-    <span class="section-icon">🎶</span>
-    <h2>Ca Đoàn Giới Trẻ</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🎶</span><h2>Ca Đoàn Giới Trẻ</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>CA ĐOÀN GIỚI TRẺ</h3>
 <h3>“YÊU THƯƠNG VÀ HỢP NHẤT”</h3>
@@ -965,10 +1024,7 @@
 </section>
 
 <section id="goretti" class="section">
-  <div class="section-header" style="border-left-color: #1a6e4a">
-    <span class="section-icon">🎼</span>
-    <h2>Ca Đoàn Maria Goretti</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🎼</span><h2>Ca Đoàn Maria Goretti</h2></div>
   <div class="section-content">
     <div class="section-text">
         <h3>CA ĐOÀN MARIA GORETTI</h3>
@@ -1011,10 +1067,7 @@
 </section>
 
 <section id="phuc-vu" class="section">
-  <div class="section-header" style="border-left-color: #4a3a1a">
-    <span class="section-icon">🕯️</span>
-    <h2>Ban Phục Vụ Thánh Lễ</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🕯️</span><h2>Ban Phục Vụ Thánh Lễ</h2></div>
   <div class="section-content">
     <div class="section-text">
         <h3>BAN PHỤC VỤ THÁNH LỄ</h3>
@@ -1052,10 +1105,7 @@
 </section>
 
 <section id="le-sinh" class="section">
-  <div class="section-header" style="border-left-color: #6e4a1a">
-    <span class="section-icon">⚜️</span>
-    <h2>Ban Lễ Sinh</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">⚜️</span><h2>Ban Lễ Sinh</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN LỄ SINH</h3>
 <h3>NHỎ MÀ KHÔNG NHỎ</h3>
@@ -1077,10 +1127,7 @@
 </section>
 
 <section id="lcttx" class="section">
-  <div class="section-header" style="border-left-color: #8B1a1a">
-    <span class="section-icon">💖</span>
-    <h2>Ban Lòng Chúa Thương Xót</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">💖</span><h2>Ban Lòng Chúa Thương Xót</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN LÒNG CHÚA THƯƠNG XÓT</h3>
 <h3>TÔN VINH TÌNH YÊU CHÚA</h3>
@@ -1109,10 +1156,7 @@
 </section>
 
 <section id="caritas" class="section">
-  <div class="section-header" style="border-left-color: #1a4a6e">
-    <span class="section-icon">🤝</span>
-    <h2>Ban Caritas</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🤝</span><h2>Ban Caritas</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN CARITAS</h3>
 <h3>VIỆC KHÔNG CỦA RIÊNG AI</h3>
@@ -1135,10 +1179,7 @@
 </section>
 
 <section id="gioi-tre" class="section">
-  <div class="section-header" style="border-left-color: #4a6e1a">
-    <span class="section-icon">🌟</span>
-    <h2>Ban Giới Trẻ</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🌟</span><h2>Ban Giới Trẻ</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN GIỚI TRẺ</h3>
 <h3>50 NĂM MỘT CHẶNG ĐƯỜNG</h3>
@@ -1165,10 +1206,7 @@
 </section>
 
 <section id="trat-tu" class="section">
-  <div class="section-header" style="border-left-color: #3a3a3a">
-    <span class="section-icon">🛡️</span>
-    <h2>Ban Trật Tự</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">🛡️</span><h2>Ban Trật Tự</h2></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN TRẬT TỰ</h3>
 <h3>NHỮNG TẤM LÒNG SẺ CHIA</h3>
@@ -1190,10 +1228,7 @@
 </section>
 
 <section id="hdmv" class="section">
-  <div class="section-header" style="border-left-color: #1a4a6e">
-    <span class="section-icon">📷</span>
-    <h2>Hình Ảnh Hoạt Động</h2>
-  </div>
+  <div class="section-header"><span class="sh-icon">📷</span><h2>Hình Ảnh Hoạt Động</h2></div>
   <div class="section-content">
     <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg')"><img src="images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg" alt="" loading="lazy"></div>
 <div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg')"><img src="images/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg" alt="" loading="lazy"></div>
@@ -1217,60 +1252,229 @@
 <div class="photo-item" onclick="openLightbox('images/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg')"><img src="images/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
-</section>
+</section>  </main><!-- /main-col -->
 
+  <!-- SIDEBAR -->
+  <aside class="sidebar-col"><div class="sidebar-sticky">
 
-  <footer class="footer">
-    <span class="cross-footer">✝</span>
-    <p>Kỷ Yếu Giáo Xứ Hiển Linh · Quận Bình Thạnh · TP.HCM</p>
-    <p style="margin-top:0.3rem; opacity:0.6; font-size:0.75rem">Lưu giữ những kỷ niệm đẹp của cộng đoàn dân Chúa</p>
-  </footer>
-</div>
+    <!-- TIN TỨC HÀNG NGÀY -->
+    <div class="sb-widget">
+      <div class="sb-head">
+        📰 Tin Tức Giáo Xứ
+        <a href="#" onclick="toggleAddForm(event)">+ Thêm tin</a>
+      </div>
+      <div id="newsList"></div>
+      <div class="news-add-form" id="addForm">
+        <label>Tiêu đề tin *</label>
+        <input type="text" id="nTitle" placeholder="VD: Thánh Lễ Bổn Mạng ngày 6/1...">
+        <div class="form-row">
+          <div>
+            <label>Chuyên mục</label>
+            <select id="nCat">
+              <option value="Thông Báo">Thông Báo</option>
+              <option value="Thánh Lễ">Thánh Lễ</option>
+              <option value="Hoạt Động">Hoạt Động</option>
+              <option value="Bác Ái">Bác Ái</option>
+              <option value="Giáo Lý">Giáo Lý</option>
+              <option value="Sự Kiện">Sự Kiện</option>
+            </select>
+          </div>
+          <div>
+            <label>Ngày</label>
+            <input type="date" id="nDate">
+          </div>
+        </div>
+        <label>Nội dung tóm tắt</label>
+        <textarea id="nBody" rows="2" placeholder="Mô tả ngắn..."></textarea>
+        <button class="btn-submit" onclick="addNews()">Đăng tin</button>
+        <button class="btn-cancel" onclick="toggleAddForm(event)">Hủy</button>
+      </div>
+    </div>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close">✕</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
+    <!-- KINH SÁCH HÀNG NGÀY -->
+    <div class="sb-widget">
+      <div class="sb-head">📖 Kinh Sách Hàng Ngày</div>
+      <div class="reading-box">
+        <div class="reading-date" id="readingDate"></div>
+        <div class="reading-title">Thứ Hai Tuần X Mùa Thường Niên</div>
+        <div class="reading-ref">Bài Đọc I — 1 V 17,1-6</div>
+        <div class="reading-text">
+          Tiên tri Êlia người Titbe, thuộc vùng Galát, thưa với Vua Akhab: "Có Đức Chúa, Thiên Chúa hằng sống của Israel mà tôi đang phụng sự, tôi thề: Sẽ không có sương, không có mưa trong những năm này, nếu tôi không nói lời đó..."
+        </div>
+        <br>
+        <div class="reading-ref">Tin Mừng — Mt 5,1-12</div>
+        <div class="reading-text">
+          "Phúc thay ai có tâm hồn nghèo khó, vì Nước Trời là của họ. Phúc thay ai hiền lành, vì họ sẽ được Đất Hứa làm gia nghiệp..."
+        </div>
+      </div>
+    </div>
+
+    <!-- MỤC LỤC -->
+    <div class="sb-widget">
+      <div class="sb-head">📋 Mục Lục</div>
+      <div class="section-nav-list" id="secNav">
+        <div class="snl-group">Lịch sử & Tổ chức</div>
+        <div class="snl-item" onclick="scrollTo('lich-su')"><span class="snl-icon">⛪</span>Lịch Sử Giáo Xứ</div>
+        <div class="snl-item" onclick="scrollTo('ban-tv')"><span class="snl-icon">✝️</span>Ban Thường Vụ HĐMVX</div>
+        <div class="snl-group">Giáo Khu</div>
+        <div class="snl-item" onclick="scrollTo('khu-1')"><span class="snl-icon">🏘️</span>GK I — Thánh Cả Giuse</div>
+        <div class="snl-item" onclick="scrollTo('khu-2')"><span class="snl-icon">🏘️</span>GK II — Phêrô & Phaolô</div>
+        <div class="snl-item" onclick="scrollTo('khu-3')"><span class="snl-icon">🏘️</span>GK III — Gioan Baotixita</div>
+        <div class="snl-item" onclick="scrollTo('khu-4')"><span class="snl-icon">🏘️</span>GK IV — Phanxicô Xaviê</div>
+        <div class="snl-group">Hội Đoàn</div>
+        <div class="snl-item" onclick="scrollTo('cac-so')"><span class="snl-icon">🙏</span>Dòng Tu Đaminh</div>
+        <div class="snl-item" onclick="scrollTo('thanh-tam')"><span class="snl-icon">❤️</span>Hội Thánh Tâm</div>
+        <div class="snl-item" onclick="scrollTo('hien-mau')"><span class="snl-icon">👩</span>Hội Hiền Mẫu</div>
+        <div class="snl-item" onclick="scrollTo('daminh')"><span class="snl-icon">✠</span>Huynh Đoàn Đaminh</div>
+        <div class="snl-item" onclick="scrollTo('legio')"><span class="snl-icon">🌹</span>Legio Mariae</div>
+        <div class="snl-group">Ca Đoàn</div>
+        <div class="snl-item" onclick="scrollTo('cecilia')"><span class="snl-icon">🎵</span>Ca Đoàn Cecilia</div>
+        <div class="snl-item" onclick="scrollTo('gioi-tre-ca')"><span class="snl-icon">🎶</span>Ca Đoàn Giới Trẻ</div>
+        <div class="snl-item" onclick="scrollTo('goretti')"><span class="snl-icon">🎼</span>Ca Đoàn Maria Goretti</div>
+        <div class="snl-group">Ban Phục Vụ</div>
+        <div class="snl-item" onclick="scrollTo('phuc-vu')"><span class="snl-icon">🕯️</span>Ban Phục Vụ Thánh Lễ</div>
+        <div class="snl-item" onclick="scrollTo('le-sinh')"><span class="snl-icon">⚜️</span>Ban Lễ Sinh</div>
+        <div class="snl-item" onclick="scrollTo('lcttx')"><span class="snl-icon">💖</span>Ban LCTX</div>
+        <div class="snl-item" onclick="scrollTo('caritas')"><span class="snl-icon">🤝</span>Ban Caritas</div>
+        <div class="snl-item" onclick="scrollTo('gioi-tre')"><span class="snl-icon">🌟</span>Ban Giới Trẻ</div>
+        <div class="snl-item" onclick="scrollTo('trat-tu')"><span class="snl-icon">🛡️</span>Ban Trật Tự</div>
+      </div>
+    </div>
+
+  </div></aside>
+</div><!-- /page-body -->
+
+<!-- FOOTER -->
+<footer style="background:var(--bg2);color:var(--ink3);text-align:center;padding:1.5rem;font-size:.75rem;letter-spacing:.04em;border-top:2px solid var(--gold2)">
+  <div style="color:var(--gold);font-family:'Lora',serif;font-size:.9rem;margin-bottom:.3rem">✝ Giáo Xứ Hiển Linh</div>
+  Số 5GH Ngô Tất Tố, Phường 22, Quận Bình Thạnh, TP.HCM &nbsp;·&nbsp; Kỷ Yếu 50 Năm Thành Lập (1969–2019)
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><span class="lb-x" id="lbx">✕</span><img src="" id="lbi" alt=""></div>
+<a href="#" class="btt" id="btt">↑</a>
 
 <script>
-function openLightbox(src) {
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('active');
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-}
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+// DATE
+const days=['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
+const months=['tháng 1','tháng 2','tháng 3','tháng 4','tháng 5','tháng 6','tháng 7','tháng 8','tháng 9','tháng 10','tháng 11','tháng 12'];
+const now=new Date();
+document.getElementById('todayDate').textContent=`${days[now.getDay()]}, ngày ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+document.getElementById('readingDate').textContent=`${days[now.getDay()].toUpperCase()} — ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
 
-// Smooth scroll highlight
-const navLinks = document.querySelectorAll('.nav-item');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const link = document.querySelector('.nav-item[href="#' + entry.target.id + '"]');
-      if(link) link.style.background = 'rgba(201,168,76,0.2)';
+// NEWS (localStorage)
+let newsList=JSON.parse(localStorage.getItem('gxhl_news')||'[]');
+if(!newsList.length){
+  newsList=[
+    {id:1,cat:'Thông Báo',title:'Thánh Lễ Bổn Mạng Giáo Xứ — Lễ Chúa Hiển Linh',body:'Cộng đoàn hiệp dâng Thánh Lễ trọng thể mừng Bổn Mạng vào ngày 6 tháng 1.',date:'06/01/2024',time:'2 ngày trước'},
+    {id:2,cat:'Hoạt Động',title:'Ban Caritas trao quà Tết cho 80 hộ nghèo',body:'Ban Caritas giáo xứ đã trao 80 phần quà Tết cho các gia đình khó khăn.',date:'15/01/2024',time:'1 tuần trước'},
+    {id:3,cat:'Giáo Lý',title:'Khai giảng lớp Giáo Lý Hôn Nhân khóa mới',body:'Các đôi bạn trẻ chuẩn bị kết hôn đăng ký tham dự tại văn phòng giáo xứ.',date:'20/01/2024',time:'10 ngày trước'},
+    {id:4,cat:'Thánh Lễ',title:'Lịch Thánh Lễ tuần này tại Giáo Xứ Hiển Linh',body:'Thứ 2-6: 5g30 & 18g00. Thứ 7: 5g30 & 17g30. Chúa Nhật: 5g30, 7g00, 9g00, 17g30.',date:'22/01/2024',time:'Hôm nay'},
+  ];
+}
+
+function saveNews(){localStorage.setItem('gxhl_news',JSON.stringify(newsList))}
+
+function renderNews(){
+  const el=document.getElementById('newsList');
+  if(!newsList.length){el.innerHTML='<div style="padding:1rem;font-size:.8rem;color:#888;text-align:center">Chưa có tin tức</div>';return}
+  el.innerHTML=newsList.map((n,i)=>`
+    <div class="news-item">
+      <span class="news-num">${i+1}</span>
+      <div class="news-body">
+        <div class="news-cat">${n.cat}</div>
+        <div class="news-title">${n.title}</div>
+        <div class="news-time">${n.time||n.date}</div>
+      </div>
+    </div>`).join('');
+}
+renderNews();
+
+function toggleAddForm(e){
+  e.preventDefault();
+  const f=document.getElementById('addForm');
+  f.classList.toggle('on');
+  if(f.classList.contains('on')){
+    const d=new Date();
+    document.getElementById('nDate').value=d.toISOString().split('T')[0];
+  }
+}
+function addNews(){
+  const t=document.getElementById('nTitle').value.trim();
+  if(!t){alert('Vui lòng nhập tiêu đề');return}
+  const d=document.getElementById('nDate').value;
+  const parts=d.split('-');
+  newsList.unshift({
+    id:Date.now(),
+    cat:document.getElementById('nCat').value,
+    title:t,
+    body:document.getElementById('nBody').value,
+    date:`${parts[2]}/${parts[1]}/${parts[0]}`,
+    time:'Vừa đăng'
+  });
+  saveNews();renderNews();
+  document.getElementById('addForm').classList.remove('on');
+  document.getElementById('nTitle').value='';
+  document.getElementById('nBody').value='';
+}
+
+// SCROLL ANIMATIONS
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.section').forEach(s=>io.observe(s));
+
+// ACTIVE NAV
+const nav=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('act'));
+      document.querySelectorAll('.snl-item').forEach(n=>n.classList.remove('act'));
+      const id=e.target.id;
+      // top nav — match by group
+      const map={
+        'lich-su':'lich-su','ban-tv':'ban-tv',
+        'khu-1':'khu-1','khu-2':'khu-1','khu-3':'khu-1','khu-4':'khu-1',
+        'cac-so':'cac-so','thanh-tam':'cac-so','hien-mau':'cac-so','daminh':'cac-so','legio':'cac-so',
+        'cecilia':'cecilia','gioi-tre-ca':'cecilia','goretti':'cecilia',
+        'phuc-vu':'phuc-vu','le-sinh':'phuc-vu','lcttx':'phuc-vu','trat-tu':'phuc-vu',
+        'caritas':'caritas','gioi-tre':'caritas','hdmv':'hdmv'
+      };
+      const mapped=map[id]||id;
+      const topLink=document.querySelector(`.nav-link[href="#${mapped}"]`);
+      if(topLink)topLink.classList.add('act');
+      const sideItem=document.querySelector(`.snl-item[onclick="scrollTo('${id}')"]`);
+      if(sideItem)sideItem.classList.add('act');
     }
   });
-}, {threshold: 0.3});
-document.querySelectorAll('section').forEach(s => observer.observe(s));
-</script>
-<script>
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('overlay').classList.toggle('active');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('overlay').classList.remove('active');
-}
-// Đóng sidebar khi click nav item trên mobile
-document.querySelectorAll('.nav-item').forEach(item => {
-  item.addEventListener('click', () => {
-    if (window.innerWidth <= 768) closeSidebar();
-  });
+},{threshold:.25});
+document.querySelectorAll('section').forEach(s=>nav.observe(s));
+
+// PROGRESS BAR
+const pb = document.getElementById('progress-bar');
+// SCROLL BTN
+window.addEventListener('scroll',()=>{
+  window.scrollY>400?document.getElementById('btt').classList.add('on'):document.getElementById('btt').classList.remove('on');
+  // Progress bar
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  if(pb && docH>0) pb.style.width = (window.scrollY / docH * 100) + '%';
 });
+
+// SCROLL TO
+function scrollTo(id){
+  const el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// LIGHTBOX
+function openLightbox(src){
+  document.getElementById('lbi').src=src;
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('lb').addEventListener('click',function(e){
+  if(e.target!==document.getElementById('lbi')){this.classList.remove('on');document.body.style.overflow=''}
+});
+document.getElementById('lbx').addEventListener('click',()=>{document.getElementById('lb').classList.remove('on');document.body.style.overflow=''});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}});
 </script>
 </body>
 </html>

@@ -149,8 +149,25 @@ img{max-width:100%;display:block}
 .hf-title{
   font-family:'Lora','Noto Serif',serif;
   font-size:clamp(2.5rem,5vw,4.2rem);
-  font-weight:600;color:var(--ink);line-height:1.15;
-  letter-spacing:.06em;margin-bottom:.5rem;
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:.06em;
+  margin-bottom:.5rem;
+  /* Chữ 3D vàng */
+  color:#c9963a;
+  text-shadow:
+    0 1px 0 #b8832a,
+    0 2px 0 #a87020,
+    0 3px 0 #986018,
+    0 4px 0 #885010,
+    0 5px 0 #784008,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.2),
+    0 3px 5px rgba(0,0,0,.15),
+    0 5px 10px rgba(0,0,0,.15),
+    0 10px 20px rgba(0,0,0,.1);
+  -webkit-text-stroke: 1px rgba(120,64,8,.15);
 }
 .hf-sub{
   font-family:'Lora','Noto Serif',serif;
@@ -1286,6 +1303,8 @@ img{max-width:100%;display:block}
         </div>
         <label>Nội dung tóm tắt</label>
         <textarea id="nBody" rows="2" placeholder="Mô tả ngắn..."></textarea>
+        <label>GitHub Token <span style="color:#c0392b">*</span> <a href="https://github.com/settings/tokens" target="_blank" style="font-size:.65rem;color:var(--gold2)">Lấy token tại đây</a></label>
+        <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
         <button class="btn-submit" onclick="addNews()">Đăng tin</button>
         <button class="btn-cancel" onclick="toggleAddForm(event)">Hủy</button>
       </div>
@@ -1362,10 +1381,35 @@ const now=new Date();
 document.getElementById('todayDate').textContent=`${days[now.getDay()]}, ngày ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
 document.getElementById('readingDate').textContent=`${days[now.getDay()].toUpperCase()} — ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
 
-// NEWS (localStorage)
-let newsList=JSON.parse(localStorage.getItem('gxhl_news')||'[]');
-if(!newsList.length){
-  newsList=[
+// ===== TIN TỨC GITHUB =====
+const OWNER = 'Gxhienlinh';
+const REPO  = 'KyYeu-GiaoXu-HienLinh';
+const FILE  = 'news.json';
+const RAW   = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/${FILE}`;
+const API   = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`;
+
+let newsList = [];
+let newsFileSha = '';
+
+// Load tin từ GitHub
+async function loadNews() {
+  const el = document.getElementById('newsList');
+  el.innerHTML = '<div style="padding:1rem;font-size:.8rem;color:#aaa;text-align:center">Đang tải...</div>';
+  try {
+    const r = await fetch(RAW + '?t=' + Date.now());
+    if (r.ok) {
+      newsList = await r.json();
+    } else {
+      newsList = getDefaultNews();
+    }
+  } catch(e) {
+    newsList = getDefaultNews();
+  }
+  renderNews();
+}
+
+function getDefaultNews() {
+  return [
     {id:1,cat:'Thông Báo',title:'Thánh Lễ Bổn Mạng Giáo Xứ — Lễ Chúa Hiển Linh',body:'Cộng đoàn hiệp dâng Thánh Lễ trọng thể mừng Bổn Mạng vào ngày 6 tháng 1.',date:'06/01/2024',time:'2 ngày trước'},
     {id:2,cat:'Hoạt Động',title:'Ban Caritas trao quà Tết cho 80 hộ nghèo',body:'Ban Caritas giáo xứ đã trao 80 phần quà Tết cho các gia đình khó khăn.',date:'15/01/2024',time:'1 tuần trước'},
     {id:3,cat:'Giáo Lý',title:'Khai giảng lớp Giáo Lý Hôn Nhân khóa mới',body:'Các đôi bạn trẻ chuẩn bị kết hôn đăng ký tham dự tại văn phòng giáo xứ.',date:'20/01/2024',time:'10 ngày trước'},
@@ -1373,12 +1417,13 @@ if(!newsList.length){
   ];
 }
 
-function saveNews(){localStorage.setItem('gxhl_news',JSON.stringify(newsList))}
-
-function renderNews(){
-  const el=document.getElementById('newsList');
-  if(!newsList.length){el.innerHTML='<div style="padding:1rem;font-size:.8rem;color:#888;text-align:center">Chưa có tin tức</div>';return}
-  el.innerHTML=newsList.map((n,i)=>`
+function renderNews() {
+  const el = document.getElementById('newsList');
+  if (!newsList.length) {
+    el.innerHTML = '<div style="padding:1rem;font-size:.8rem;color:#888;text-align:center">Chưa có tin tức</div>';
+    return;
+  }
+  el.innerHTML = newsList.slice(0,8).map((n,i) => `
     <div class="news-item">
       <span class="news-num">${i+1}</span>
       <div class="news-body">
@@ -1388,34 +1433,104 @@ function renderNews(){
       </div>
     </div>`).join('');
 }
-renderNews();
 
-function toggleAddForm(e){
+loadNews();
+
+function toggleAddForm(e) {
   e.preventDefault();
-  const f=document.getElementById('addForm');
+  const f = document.getElementById('addForm');
   f.classList.toggle('on');
-  if(f.classList.contains('on')){
-    const d=new Date();
-    document.getElementById('nDate').value=d.toISOString().split('T')[0];
+  if (f.classList.contains('on')) {
+    document.getElementById('nDate').value = new Date().toISOString().split('T')[0];
   }
 }
-function addNews(){
-  const t=document.getElementById('nTitle').value.trim();
-  if(!t){alert('Vui lòng nhập tiêu đề');return}
-  const d=document.getElementById('nDate').value;
-  const parts=d.split('-');
-  newsList.unshift({
-    id:Date.now(),
-    cat:document.getElementById('nCat').value,
-    title:t,
-    body:document.getElementById('nBody').value,
-    date:`${parts[2]}/${parts[1]}/${parts[0]}`,
-    time:'Vừa đăng'
-  });
-  saveNews();renderNews();
-  document.getElementById('addForm').classList.remove('on');
-  document.getElementById('nTitle').value='';
-  document.getElementById('nBody').value='';
+
+async function addNews() {
+  const t = document.getElementById('nTitle').value.trim();
+  if (!t) { alert('Vui lòng nhập tiêu đề'); return }
+  const token = document.getElementById('ghToken').value.trim();
+  if (!token) { alert('Vui lòng nhập GitHub Token để đăng tin'); return }
+
+  const d = document.getElementById('nDate').value;
+  const parts = d.split('-');
+  const now = new Date();
+  const newItem = {
+    id: Date.now(),
+    cat: document.getElementById('nCat').value,
+    title: t,
+    body: document.getElementById('nBody').value,
+    date: `${parts[2]}/${parts[1]}/${parts[0]}`,
+    time: `${parts[2]}/${parts[1]}/${parts[0]}`
+  };
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Đang đăng...';
+  btn.disabled = true;
+
+  try {
+    // Lấy SHA file hiện tại
+    const infoR = await fetch(API, {
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+    });
+
+    let sha = '';
+    let existingNews = [...newsList];
+    if (infoR.ok) {
+      const info = await infoR.json();
+      sha = info.sha;
+    }
+
+    // Thêm tin mới vào đầu
+    existingNews.unshift(newItem);
+
+    // Encode JSON sang base64
+    const jsonStr = JSON.stringify(existingNews, null, 2);
+    const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    // Push lên GitHub
+    const body = { message: `Thêm tin: ${t}`, content: b64 };
+    if (sha) body.sha = sha;
+
+    const pushR = await fetch(API, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (pushR.ok) {
+      newsList = existingNews;
+      renderNews();
+      document.getElementById('addForm').classList.remove('on');
+      document.getElementById('nTitle').value = '';
+      document.getElementById('nBody').value = '';
+      document.getElementById('ghToken').value = '';
+      showToast('✅ Đăng tin thành công! Mọi người sẽ thấy sau vài giây.');
+    } else {
+      const err = await pushR.json();
+      alert('Lỗi: ' + (err.message || 'Không thể đăng tin'));
+    }
+  } catch(e) {
+    alert('Lỗi kết nối: ' + e.message);
+  }
+  btn.textContent = 'Đăng tin';
+  btn.disabled = false;
+}
+
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.style.cssText = 'position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);background:#1a1a18;color:#fff;padding:.7rem 1.4rem;border-radius:4px;font-size:.82rem;z-index:9999;opacity:0;transition:opacity .3s;white-space:nowrap;border-left:3px solid #b8922a';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  setTimeout(() => t.style.opacity = '0', 3500);
 }
 
 // SCROLL ANIMATIONS

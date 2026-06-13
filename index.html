@@ -346,6 +346,21 @@ img{max-width:100%;display:block}
   transition:background .2s;
 }
 .btn-submit:hover{background:var(--gold)}
+.cg-link{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.7rem .6rem;border-radius:4px;
+  text-decoration:none;color:inherit;
+  transition:background .15s;
+}
+.cg-link:hover{background:var(--bg2)}
+.cg-link-icon{font-size:1.1rem;flex-shrink:0;width:24px;text-align:center}
+.cg-link-text{flex:1;min-width:0}
+.cg-link-text strong{
+  display:block;font-size:.82rem;font-weight:500;color:var(--ink);
+  font-family:'Lora','Noto Serif',serif;
+}
+.cg-link-text span{font-size:.68rem;color:var(--ink3)}
+.cg-link-arrow{font-size:.85rem;color:var(--gold2);flex-shrink:0}
 .btn-cancel{
   width:100%;padding:.4rem;margin-top:.3rem;
   background:none;color:var(--ink3);
@@ -1307,6 +1322,37 @@ img{max-width:100%;display:block}
         <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
         <button class="btn-submit" onclick="addNews()">Đăng tin</button>
         <button class="btn-cancel" onclick="toggleAddForm(event)">Hủy</button>
+      </div>
+    </div>
+
+    <!-- TIN TỨC CÔNG GIÁO -->
+    <div class="sb-widget">
+      <div class="sb-head">⛪ Tin Tức Công Giáo</div>
+      <div style="padding:.6rem">
+        <a href="https://tgpsaigon.net/tin-tuc" target="_blank" rel="noopener" class="cg-link">
+          <span class="cg-link-icon">🏛️</span>
+          <div class="cg-link-text">
+            <strong>Tổng Giáo Phận Sài Gòn</strong>
+            <span>tgpsaigon.net</span>
+          </div>
+          <span class="cg-link-arrow">↗</span>
+        </a>
+        <a href="https://hdgmvietnam.com/" target="_blank" rel="noopener" class="cg-link">
+          <span class="cg-link-icon">🇻🇳</span>
+          <div class="cg-link-text">
+            <strong>Hội Đồng Giám Mục Việt Nam</strong>
+            <span>hdgmvietnam.com</span>
+          </div>
+          <span class="cg-link-arrow">↗</span>
+        </a>
+        <a href="https://www.vaticannews.va/vi.html" target="_blank" rel="noopener" class="cg-link">
+          <span class="cg-link-icon">🌍</span>
+          <div class="cg-link-text">
+            <strong>Vatican News (Tiếng Việt)</strong>
+            <span>vaticannews.va</span>
+          </div>
+          <span class="cg-link-arrow">↗</span>
+        </a>
       </div>
     </div>
 

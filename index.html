@@ -446,6 +446,43 @@ img{max-width:100%;display:block}
   .hf-title{font-size:1.8rem}
   .header-main{padding:.6rem 1rem}
 }
+
+/* ===== FEATURED CARD GRID (kiểu Cần Thơ) ===== */
+.feature-grid-wrap{background:var(--bg);padding:2.5rem 1.5rem;border-bottom:1px solid var(--line)}
+.feature-grid-title{
+  max-width:var(--max);margin:0 auto 1.2rem;
+  font-family:'Lora','Noto Serif',serif;font-size:1.1rem;font-weight:600;
+  color:var(--ink);display:flex;align-items:center;gap:.6rem;
+}
+.feature-grid-title::after{content:'';flex:1;height:1px;background:var(--line)}
+.feature-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:.8rem;
+}
+.feature-card{
+  position:relative;border-radius:6px;overflow:hidden;cursor:pointer;
+  aspect-ratio:4/5;background:var(--line);
+  text-decoration:none;display:block;
+}
+.feature-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
+.feature-card:hover img{transform:scale(1.07)}
+.feature-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,transparent 100%);
+}
+.feature-card-label{
+  position:absolute;left:0;right:0;bottom:0;padding:.7rem .6rem;z-index:1;
+  font-family:'Lora','Noto Serif',serif;font-size:.78rem;font-weight:600;
+  color:#fff;line-height:1.3;
+}
+.feature-card-tag{
+  position:absolute;top:.5rem;left:.5rem;z-index:1;
+  background:var(--gold2);color:#fff;font-size:.6rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:.2rem .5rem;border-radius:2px;
+}
+@media(max-width:1000px){.feature-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.feature-grid{grid-template-columns:repeat(2,1fr)}.feature-grid-wrap{padding:1.5rem 1rem}}
 </style>
 </head>
 <body>
@@ -511,6 +548,21 @@ img{max-width:100%;display:block}
       <div class="hf-stat-sep">·</div>
       <div class="hf-stat"><strong>1968</strong><span>Năm thành lập</span></div>
     </div>
+  </div>
+</div>
+
+
+<div class="feature-grid-wrap">
+  <div class="feature-grid-title">✦&nbsp; Khám Phá Kỷ Yếu</div>
+  <div class="feature-grid">
+    <a href="#ban-tv" class="feature-card"><img src="images/ban-tv/Bổn mạng HDMVGX 2019.JPG" alt=""><span class="feature-card-tag">Tổ Chức</span><span class="feature-card-label">Ban Thường Vụ HĐMVX</span></a>
+    <a href="#thanh-tam" class="feature-card"><img src="images/thanh-tam/snapedit_1734773162419.jpg" alt=""><span class="feature-card-tag">Hội Đoàn</span><span class="feature-card-label">Hội Thánh Tâm</span></a>
+    <a href="#hien-mau" class="feature-card"><img src="images/hien-mau/IMG_6630.jpg" alt=""><span class="feature-card-tag">Hội Đoàn</span><span class="feature-card-label">Hội Hiền Mẫu</span></a>
+    <a href="#cecilia" class="feature-card"><img src="images/cecilia/20190718_092246.png" alt=""><span class="feature-card-tag">Ca Đoàn</span><span class="feature-card-label">Ca Đoàn Cecilia</span></a>
+    <a href="#goretti" class="feature-card"><img src="images/goretti/Ca đoàn Maria Goretti.jpg" alt=""><span class="feature-card-tag">Ca Đoàn</span><span class="feature-card-label">Ca Đoàn Maria Goretti</span></a>
+    <a href="#phuc-vu" class="feature-card"><img src="images/phuc-vu/BPV2.jpg" alt=""><span class="feature-card-tag">Phục Vụ</span><span class="feature-card-label">Ban Phục Vụ Thánh Lễ</span></a>
+    <a href="#caritas" class="feature-card"><img src="images/caritas/1.jpg" alt=""><span class="feature-card-tag">Bác Ái</span><span class="feature-card-label">Ban Caritas</span></a>
+    <a href="#hdmv" class="feature-card"><img src="images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg" alt=""><span class="feature-card-tag">Hình Ảnh</span><span class="feature-card-label">Hình Ảnh Hoạt Động</span></a>
   </div>
 </div>
 

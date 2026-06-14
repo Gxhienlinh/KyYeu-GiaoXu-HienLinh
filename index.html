@@ -123,7 +123,7 @@ img{max-width:100%;display:block}
 .hero-feature{
   background:linear-gradient(160deg,#fefdfb 0%,#fdf6e7 50%,#fefdfb 100%);
   color:var(--ink);
-  padding:5rem 2rem 4rem;
+  padding:2rem 2rem 1.8rem;
   text-align:center;
   border-bottom:3px solid var(--gold2);
   border-top:1px solid var(--line);
@@ -141,18 +141,18 @@ img{max-width:100%;display:block}
   display:inline-block;font-size:.7rem;font-weight:600;
   letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);border:1px solid rgba(138,110,47,.3);
-  padding:.4rem 1.2rem;border-radius:2px;margin-bottom:1.5rem;
+  padding:.3rem .9rem;border-radius:2px;margin-bottom:.8rem;
   background:rgba(138,110,47,.04);
 }
-.hf-cross{font-size:2rem;color:var(--gold);display:block;margin-bottom:.8rem;animation:fl 4s ease-in-out infinite}
+.hf-cross{font-size:1.3rem;color:var(--gold);display:block;margin-bottom:.4rem;animation:fl 4s ease-in-out infinite}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .hf-title{
   font-family:'Lora','Noto Serif',serif;
-  font-size:clamp(2.5rem,5vw,4.2rem);
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
   font-weight:700;
   line-height:1.15;
   letter-spacing:.06em;
-  margin-bottom:.5rem;
+  margin-bottom:.3rem;
   /* Chữ 3D vàng */
   color:#c9963a;
   text-shadow:
@@ -174,7 +174,7 @@ img{max-width:100%;display:block}
   font-size:1rem;font-style:italic;
   color:rgba(184,146,42,.85);margin-bottom:1.2rem;
 }
-.hf-divider{display:flex;align-items:center;gap:.8rem;justify-content:center;margin:.8rem 0}
+.hf-divider{display:flex;align-items:center;gap:.8rem;justify-content:center;margin:.4rem 0}
 .hf-line{width:40px;height:1px}
 .hf-line:first-child{background:linear-gradient(90deg,transparent,var(--gold2))}
 .hf-line:last-child{background:linear-gradient(90deg,var(--gold2),transparent)}
@@ -188,9 +188,9 @@ img{max-width:100%;display:block}
   margin-bottom:.8rem;
 }
 .hf-addr{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.04em;margin-bottom:1.2rem}
-.hf-stats{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:1.5rem}
+.hf-stats{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:.8rem}
 .hf-stat{text-align:center}
-.hf-stat strong{display:block;font-family:'Lora','Noto Serif',serif;font-size:2rem;font-weight:600;color:var(--gold);line-height:1}
+.hf-stat strong{display:block;font-family:'Lora','Noto Serif',serif;font-size:1.4rem;font-weight:600;color:var(--gold);line-height:1}
 .hf-stat span{font-size:.65rem;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem;display:block}
 .hf-stat-sep{color:var(--line);font-size:1.2rem}
 
@@ -447,6 +447,55 @@ img{max-width:100%;display:block}
   .header-main{padding:.6rem 1rem}
 }
 
+/* ===== READ MORE ===== */
+.rm-wrap{position:relative}
+.rm-inner{
+  overflow:hidden;
+  transition:height .4s ease;
+}
+.rm-fade{
+  position:absolute;bottom:0;left:0;right:0;
+  height:70px;
+  background:linear-gradient(to bottom,transparent,#fff);
+  pointer-events:none;
+  transition:opacity .3s;
+}
+.section:nth-child(even) .rm-fade{
+  background:linear-gradient(to bottom,transparent,var(--bg2));
+}
+.rm-wrap.expanded .rm-fade{opacity:0;pointer-events:none}
+.rm-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  margin-top:.6rem;font-size:.82rem;font-weight:500;
+  color:var(--gold2);cursor:pointer;background:none;
+  border:none;padding:.3rem 0;font-family:'Inter',sans-serif;
+  transition:color .2s;
+}
+.rm-btn:hover{color:var(--gold)}
+.rm-btn .arr{transition:transform .3s ease;display:inline-block}
+.rm-wrap.expanded .rm-btn .arr{transform:rotate(180deg)}
+
+/* ===== ACCORDION ===== */
+.section-header{cursor:pointer;user-select:none}
+.section-header:hover{background:var(--gold-bg)}
+.acc-arrow{
+  margin-left:auto;font-size:.8rem;color:var(--ink3);
+  transition:transform .3s ease;flex-shrink:0;
+}
+.section.open .acc-arrow{transform:rotate(180deg)}
+.section-content{
+  padding:1.4rem 1.6rem;display:grid;gap:1.8rem;
+  max-height:0;overflow:hidden;
+  transition:max-height .45s ease, padding .3s ease;
+  padding-top:0;padding-bottom:0;
+}
+.section.open .section-content{
+  max-height:9999px;
+  padding-top:1.4rem;padding-bottom:1.4rem;
+}
+.section-content.has-img{grid-template-columns:1fr 1fr}
+@media(max-width:700px){.section-content.has-img{grid-template-columns:1fr}}
+
 /* ===== FEATURED CARD GRID (kiểu Cần Thơ) ===== */
 .feature-grid-wrap{background:var(--bg);padding:2.5rem 1.5rem;border-bottom:1px solid var(--line)}
 .feature-grid-title{
@@ -571,10 +620,12 @@ img{max-width:100%;display:block}
 
   <!-- MAIN COLUMN: all sections -->
   <main class="main-col" id="mainCol">
-<section id="lich-su" class="section">
-  <div class="section-header"><span class="sh-icon">⛪</span><h2>Lịch Sử Giáo Xứ</h2></div>
+<section id="lich-su" class="section open">
+  <div class="section-header"><span class="sh-icon">⛪</span><h2>Lịch Sử Giáo Xứ</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
-    <div class="section-text"><h3>GIÁO XỨ HIỂN LINH</h3>
+    <div class="rm-wrap" id="rm-lich-su">
+      <div class="rm-inner" id="rm-inner-lich-su">
+        <div class="section-text"><h3>GIÁO XỨ HIỂN LINH</h3>
 <h4>Số 5GH Ngô Tất Tố, Phường 22, Quận Bình Thạnh, Tp.HCM</h4>
 <h3>QUÁ TRÌNH HÌNH THÀNH VÀ PHÁT TRIỂN</h3>
 <p>Năm 1964: Cha Luca Phạm Anh Dụ khởi công xây dựng Nhà Thờ trên  thửa ruộng 800m2 bằng vật liệu nhẹ, tường gạch, mái tole. Nơi đây thuộc Giáo khu 9 Giáo xứ Thị Nghè. Hằng ngày cộng đoàn giáo dân đến cầu nguyện. Chúa nhật mới có Linh mục đến dâng Thánh Lễ.</p>
@@ -645,11 +696,18 @@ img{max-width:100%;display:block}
 <h4>Ông Giuse Đinh Văn Cống               	:Phó Chủ Tịch</h4>
 <h4>Ông Giuse Dương Minh Lang           	:Thư Ký</h4></div>
     
+ </div>
+      </div>
+      <div class="rm-fade" id="rm-fade-lich-su"></div>
+      <button class="rm-btn" onclick="toggleRM('lich-su')">
+        Xem thêm <span class="arr">▼</span>
+      </button>
+    </div>
   </div>
 </section>
 
 <section id="ban-tv" class="section">
-  <div class="section-header"><span class="sh-icon">✝️</span><h2>Ban Thường Vụ HĐMVX</h2></div>
+  <div class="section-header"><span class="sh-icon">✝️</span><h2>Ban Thường Vụ HĐMVX</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>CÁC LINH MỤC VÀ HỘI ĐỒNG MỤC VỤ GIÁO XỨ QUA CÁC NHIỆM KỲ</h3>
 <h3>1.CÁC LINH MỤC PHỤC VỤ GIÁO XỨ HIỂN LINH:</h3>
@@ -703,7 +761,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="khu-1" class="section">
-  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu I — Thánh Cả Giuse</h2></div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu I — Thánh Cả Giuse</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU I</h3>
 <p>Thánh Bổn Mạng: Thánh Cả Giuse.</p>
@@ -740,7 +798,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="khu-2" class="section">
-  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu II — Thánh Phêrô &amp; Phaolô</h2></div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu II — Thánh Phêrô &amp; Phaolô</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU II</h3>
 <h4>Thánh Bổn Mạng: Thánh Phêrô và Phaolô</h4>
@@ -783,7 +841,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="khu-3" class="section">
-  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu III — Thánh Gioan Baotixita</h2></div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu III — Thánh Gioan Baotixita</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU III</h3>
 <h4>Thánh Bổn Mạng: Thánh Gioan Baotixita</h4>
@@ -826,7 +884,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="khu-4" class="section">
-  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu IV — Thánh Phanxicô Xaviê</h2></div>
+  <div class="section-header"><span class="sh-icon">🏘️</span><h2>Giáo Khu IV — Thánh Phanxicô Xaviê</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>GIÁO KHU IV</h3>
 <h4>Thánh Bổn Mạng: Thánh Phanxicô Xaviê</h4>
@@ -867,7 +925,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="cac-so" class="section">
-  <div class="section-header"><span class="sh-icon">🙏</span><h2>Dòng Tu Đaminh Bà Rịa</h2></div>
+  <div class="section-header"><span class="sh-icon">🙏</span><h2>Dòng Tu Đaminh Bà Rịa</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>DÒNG TU ĐAMINH BÀ RỊA VŨNG TÀU</h3>
 <h3>TU XÁ TÊRÊSA</h3>
@@ -895,7 +953,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="thanh-tam" class="section">
-  <div class="section-header"><span class="sh-icon">❤️</span><h2>Hội Thánh Tâm</h2></div>
+  <div class="section-header"><span class="sh-icon">❤️</span><h2>Hội Thánh Tâm</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text">
         <h3>GIA ĐÌNH PHẠT TẠ THÁNH TÂM</h3>
@@ -932,7 +990,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="hien-mau" class="section">
-  <div class="section-header"><span class="sh-icon">👩</span><h2>Hội Hiền Mẫu</h2></div>
+  <div class="section-header"><span class="sh-icon">👩</span><h2>Hội Hiền Mẫu</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>HỘI HIỀN MẪU</h3>
 <h3>THEO CHÂN MẸ SẦU BI</h3>
@@ -963,7 +1021,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="daminh" class="section">
-  <div class="section-header"><span class="sh-icon">✠</span><h2>Huynh Đoàn GD Đaminh</h2></div>
+  <div class="section-header"><span class="sh-icon">✠</span><h2>Huynh Đoàn GD Đaminh</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>HUYNH ĐOÀN GIÁO DÂN ĐAMINH</h3>
 <h4>I/ Tổ chức và hoạt động</h4>
@@ -1015,7 +1073,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="legio" class="section">
-  <div class="section-header"><span class="sh-icon">🌹</span><h2>Legio Mariae</h2></div>
+  <div class="section-header"><span class="sh-icon">🌹</span><h2>Legio Mariae</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>LEGIO MARIAE</h3>
 <h3>CÙNG MẸ RA KHƠI</h3>
@@ -1053,7 +1111,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="cecilia" class="section">
-  <div class="section-header"><span class="sh-icon">🎵</span><h2>Ca Đoàn Cecilia</h2></div>
+  <div class="section-header"><span class="sh-icon">🎵</span><h2>Ca Đoàn Cecilia</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text">
         <h3>CA ĐOÀN CECILIA</h3>
@@ -1074,7 +1132,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="gioi-tre-ca" class="section">
-  <div class="section-header"><span class="sh-icon">🎶</span><h2>Ca Đoàn Giới Trẻ</h2></div>
+  <div class="section-header"><span class="sh-icon">🎶</span><h2>Ca Đoàn Giới Trẻ</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>CA ĐOÀN GIỚI TRẺ</h3>
 <h3>“YÊU THƯƠNG VÀ HỢP NHẤT”</h3>
@@ -1108,7 +1166,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="goretti" class="section">
-  <div class="section-header"><span class="sh-icon">🎼</span><h2>Ca Đoàn Maria Goretti</h2></div>
+  <div class="section-header"><span class="sh-icon">🎼</span><h2>Ca Đoàn Maria Goretti</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text">
         <h3>CA ĐOÀN MARIA GORETTI</h3>
@@ -1151,7 +1209,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="phuc-vu" class="section">
-  <div class="section-header"><span class="sh-icon">🕯️</span><h2>Ban Phục Vụ Thánh Lễ</h2></div>
+  <div class="section-header"><span class="sh-icon">🕯️</span><h2>Ban Phục Vụ Thánh Lễ</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text">
         <h3>BAN PHỤC VỤ THÁNH LỄ</h3>
@@ -1189,7 +1247,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="le-sinh" class="section">
-  <div class="section-header"><span class="sh-icon">⚜️</span><h2>Ban Lễ Sinh</h2></div>
+  <div class="section-header"><span class="sh-icon">⚜️</span><h2>Ban Lễ Sinh</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN LỄ SINH</h3>
 <h3>NHỎ MÀ KHÔNG NHỎ</h3>
@@ -1211,7 +1269,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="lcttx" class="section">
-  <div class="section-header"><span class="sh-icon">💖</span><h2>Ban Lòng Chúa Thương Xót</h2></div>
+  <div class="section-header"><span class="sh-icon">💖</span><h2>Ban Lòng Chúa Thương Xót</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN LÒNG CHÚA THƯƠNG XÓT</h3>
 <h3>TÔN VINH TÌNH YÊU CHÚA</h3>
@@ -1240,7 +1298,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="caritas" class="section">
-  <div class="section-header"><span class="sh-icon">🤝</span><h2>Ban Caritas</h2></div>
+  <div class="section-header"><span class="sh-icon">🤝</span><h2>Ban Caritas</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN CARITAS</h3>
 <h3>VIỆC KHÔNG CỦA RIÊNG AI</h3>
@@ -1263,7 +1321,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="gioi-tre" class="section">
-  <div class="section-header"><span class="sh-icon">🌟</span><h2>Ban Giới Trẻ</h2></div>
+  <div class="section-header"><span class="sh-icon">🌟</span><h2>Ban Giới Trẻ</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN GIỚI TRẺ</h3>
 <h3>50 NĂM MỘT CHẶNG ĐƯỜNG</h3>
@@ -1290,7 +1348,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="trat-tu" class="section">
-  <div class="section-header"><span class="sh-icon">🛡️</span><h2>Ban Trật Tự</h2></div>
+  <div class="section-header"><span class="sh-icon">🛡️</span><h2>Ban Trật Tự</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="section-text"><h3>BAN TRẬT TỰ</h3>
 <h3>NHỮNG TẤM LÒNG SẺ CHIA</h3>
@@ -1312,7 +1370,7 @@ img{max-width:100%;display:block}
 </section>
 
 <section id="hdmv" class="section">
-  <div class="section-header"><span class="sh-icon">📷</span><h2>Hình Ảnh Hoạt Động</h2></div>
+  <div class="section-header"><span class="sh-icon">📷</span><h2>Hình Ảnh Hoạt Động</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="photo-grid"><div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg')"><img src="images/hdmv/z6206576760958_000_8b014bd56489842b8abb3cca708bc77a.jpg" alt="" loading="lazy"></div>
 <div class="photo-item" onclick="openLightbox('images/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg')"><img src="images/hdmv/z6206576760958_001_1975662cfc7f85871a547dcfa081818e.jpg" alt="" loading="lazy"></div>
@@ -1663,6 +1721,67 @@ document.querySelectorAll('section').forEach(s=>nav.observe(s));
 
 // PROGRESS BAR
 const pb = document.getElementById('progress-bar');
+// READ MORE - JS thuần, không dùng CSS max-height
+const RM_COLLAPSED_H = 200; // px hiển thị khi thu gọn
+
+function initRM(id) {
+  const inner = document.getElementById('rm-inner-' + id);
+  const wrap  = document.getElementById('rm-' + id);
+  if (!inner || !wrap) return;
+  const fullH = inner.scrollHeight;
+  if (fullH <= RM_COLLAPSED_H) {
+    // Nội dung ngắn, ẩn nút
+    const btn = wrap.querySelector('.rm-btn');
+    const fade = document.getElementById('rm-fade-' + id);
+    if (btn) btn.style.display = 'none';
+    if (fade) fade.style.display = 'none';
+    inner.style.height = 'auto';
+    return;
+  }
+  inner.style.height = RM_COLLAPSED_H + 'px';
+}
+
+function toggleRM(id) {
+  const inner = document.getElementById('rm-inner-' + id);
+  const wrap  = document.getElementById('rm-' + id);
+  const btn   = wrap.querySelector('.rm-btn');
+  const isExpanded = wrap.classList.contains('expanded');
+
+  if (isExpanded) {
+    // Thu gọn
+    inner.style.height = RM_COLLAPSED_H + 'px';
+    wrap.classList.remove('expanded');
+    btn.innerHTML = 'Xem thêm <span class="arr">▼</span>';
+    wrap.scrollIntoView({behavior:'smooth', block:'start'});
+  } else {
+    // Mở ra
+    inner.style.height = inner.scrollHeight + 'px';
+    wrap.classList.add('expanded');
+    btn.innerHTML = 'Thu gọn <span class="arr">▲</span>';
+  }
+}
+
+// Khởi tạo sau khi DOM load
+document.addEventListener('DOMContentLoaded', () => {
+  initRM('lich-su');
+});
+
+// ACCORDION
+document.querySelectorAll('.section-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const section = header.closest('.section');
+    const isOpen = section.classList.contains('open');
+    // Đóng tất cả
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('open'));
+    // Mở cái được click (nếu chưa mở)
+    if (!isOpen) section.classList.add('open');
+    // Scroll đến section
+    setTimeout(() => {
+      section.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 50);
+  });
+});
+
 // SCROLL BTN
 window.addEventListener('scroll',()=>{
   window.scrollY>400?document.getElementById('btt').classList.add('on'):document.getElementById('btt').classList.remove('on');

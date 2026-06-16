@@ -253,6 +253,60 @@ img{max-width:100%;display:block}
 .priest-card h4{font-family:'Lora','Noto Serif',serif;font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;font-style:normal}
 .priest-card p{font-size:.84rem;color:var(--ink2);margin-bottom:.2rem;line-height:1.55}
 
+/* PRIEST PROFILE — kiểu Vĩnh Hòa: ảnh trái + tiểu sử phải */
+.priest-profile{
+  display:flex;gap:1.2rem;align-items:flex-start;
+  border:1px solid var(--line);border-radius:4px;
+  padding:1rem 1.2rem;margin:.8rem 0;
+  background:var(--bg);
+  transition:box-shadow .2s;
+}
+.priest-profile:hover{box-shadow:0 2px 12px rgba(138,110,47,.1)}
+.priest-profile-img{
+  flex-shrink:0;width:120px;
+  border-radius:3px;overflow:hidden;
+  border:2px solid var(--line);
+}
+.priest-profile-img img{
+  width:100%;height:160px;object-fit:cover;
+  display:block;
+}
+.priest-profile-img.no-photo{
+  height:160px;background:var(--bg2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--ink3);font-size:.7rem;text-align:center;gap:.3rem;
+}
+.priest-profile-img.no-photo::before{content:'✝';font-size:1.6rem;color:var(--gold2)}
+.priest-profile-body{flex:1;min-width:0}
+.priest-profile-name{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:1rem;font-weight:700;color:var(--ink);
+  margin-bottom:.5rem;
+  border-bottom:2px solid var(--gold2);
+  padding-bottom:.4rem;
+}
+.priest-profile-body p{
+  font-size:.85rem;color:var(--ink2);
+  line-height:1.6;margin-bottom:.2rem;
+}
+.priest-profile-body p::before{content:'— ';color:var(--gold2);font-weight:600}
+.priest-profile-body .note{
+  font-style:italic;color:var(--ink3);
+  font-size:.8rem;margin-top:.4rem;
+}
+.priest-profile-body .note::before{content:''}
+@media(max-width:500px){
+  .priest-profile{flex-direction:column}
+  .priest-profile-img{width:100%;max-width:140px}
+}
+.priest-list-title{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:.95rem;font-weight:700;color:var(--ink);
+  margin:1.4rem 0 .6rem;
+  padding-left:.8rem;border-left:3px solid var(--gold2);
+  letter-spacing:.02em;
+}
+
 /* PHOTO GRID */
 .photo-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
@@ -419,7 +473,139 @@ img{max-width:100%;display:block}
 .lb-x{position:absolute;top:1rem;right:1rem;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08)}
 .lb-x:hover{background:rgba(255,255,255,.18)}
 
-/* BACK TO TOP */
+.news2col-src-tabs{
+  margin-left:auto;display:flex;gap:.3rem;
+}
+.src-tab{
+  background:none;border:1px solid rgba(184,146,42,.35);
+  color:var(--ink3);font-size:.62rem;font-weight:600;
+  letter-spacing:.06em;padding:.2rem .55rem;border-radius:2px;
+  cursor:pointer;font-family:'Inter',sans-serif;
+  transition:all .2s;white-space:nowrap;
+}
+.src-tab:hover{background:rgba(184,146,42,.1);color:var(--gold2)}
+.src-tab.act{background:var(--gold2);color:#fff;border-color:var(--gold2)}
+
+/* FEED CARD — có ảnh */
+.feed-card{
+  display:flex;gap:.85rem;align-items:flex-start;
+  padding:.85rem 1.1rem;border-bottom:1px solid var(--line);
+  text-decoration:none;color:inherit;
+  transition:background .15s;
+}
+.feed-card:last-child{border-bottom:none}
+.feed-card:hover{background:var(--bg2)}
+.feed-card-img{
+  flex-shrink:0;width:90px;height:64px;
+  border-radius:3px;overflow:hidden;background:var(--line);
+}
+.feed-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.feed-card-img.no-img{
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--ink3);
+}
+.feed-card-body{flex:1;min-width:0}
+.feed-card-source{
+  font-size:.6rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--red);margin-bottom:.2rem;
+}
+.feed-card-title{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:.87rem;font-weight:500;color:var(--ink);
+  line-height:1.4;margin-bottom:.25rem;
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
+.feed-card:hover .feed-card-title{color:var(--gold2)}
+.feed-card-desc{
+  font-size:.75rem;color:var(--ink3);line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+  margin-bottom:.25rem;
+}
+.feed-card-meta{font-size:.65rem;color:var(--ink3)}
+.feed-loading{
+  padding:1.5rem;text-align:center;
+  font-size:.82rem;color:var(--ink3);
+}
+.feed-error{
+  padding:1rem 1.1rem;font-size:.8rem;
+  color:var(--ink3);font-style:italic;
+}
+
+/* Parish news card (cột 2) */
+.pnews-card{
+  display:flex;gap:.85rem;align-items:flex-start;
+  padding:.85rem 1.1rem;border-bottom:1px solid var(--line);
+}
+.pnews-card:last-child{border-bottom:none}
+.pnews-num{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  background:var(--gold-bg);border:1px solid var(--gold2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:700;color:var(--gold2);
+  margin-top:.1rem;
+}
+.pnews-body{flex:1;min-width:0}
+.pnews-cat{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:.2rem}
+.pnews-title{font-family:'Lora','Noto Serif',serif;font-size:.88rem;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:.2rem}
+.pnews-desc{font-size:.75rem;color:var(--ink3);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pnews-meta{font-size:.65rem;color:var(--ink3);margin-top:.2rem}
+
+/* ===== BACK TO TOP ===== */
+.news2col-wrap{
+  max-width:var(--max);margin:0 auto;
+  padding:2rem 1.5rem 2.5rem;
+}
+.news2col-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2rem;
+}
+@media(max-width:700px){.news2col-grid{grid-template-columns:1fr}}
+.news2col-box{
+  background:var(--bg);border:1px solid var(--line);
+}
+.news2col-head{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.75rem 1.1rem;
+  border-bottom:2px solid var(--gold2);
+  background:var(--gold-bg);
+  font-size:.78rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+}
+.news2col-icon{font-size:1rem}
+.news2col-add{
+  margin-left:auto;font-size:.68rem;color:var(--gold2);
+  font-weight:500;letter-spacing:.03em;text-transform:none;
+}
+.news2col-add:hover{text-decoration:underline}
+.news2col-body{display:flex;flex-direction:column}
+.news2col-item{
+  display:block;padding:.85rem 1.1rem;
+  border-bottom:1px solid var(--line);
+  text-decoration:none;
+  transition:background .15s;
+}
+.news2col-item:last-child{border-bottom:none}
+.news2col-item:hover{background:var(--bg2)}
+.news2col-source{
+  font-size:.62rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--red);margin-bottom:.25rem;
+}
+.news2col-title{
+  font-family:'Lora','Noto Serif',serif;
+  font-size:.88rem;font-weight:500;color:var(--ink);
+  line-height:1.45;margin-bottom:.25rem;
+}
+.news2col-item:hover .news2col-title{color:var(--gold2)}
+.news2col-meta{font-size:.67rem;color:var(--ink3)}
+.news2col-num{
+  font-size:.75rem;font-weight:600;color:var(--gold2);
+  flex-shrink:0;width:20px;margin-top:.1rem;
+}
+.news2col-inner{display:flex;gap:.7rem;align-items:flex-start}
+
+/* ===== BACK TO TOP ===== */
 .btt{
   position:fixed;bottom:1.5rem;right:1.5rem;
   width:36px;height:36px;border-radius:50%;
@@ -616,11 +802,11 @@ img{max-width:100%;display:block}
 </div>
 
 <!-- PAGE BODY -->
-<div class="page-body">
+<div class="page-body" style="display:none">
 
   <!-- MAIN COLUMN: all sections -->
   <main class="main-col" id="mainCol">
-<section id="lich-su" class="section open">
+<section id="lich-su" class="section">
   <div class="section-header"><span class="sh-icon">⛪</span><h2>Lịch Sử Giáo Xứ</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
     <div class="rm-wrap" id="rm-lich-su">
@@ -653,39 +839,60 @@ img{max-width:100%;display:block}
 <p>Ngày 4 tháng 1 năm 2019:  Đức Cha Louis Nguyễn Anh Tuấn cùng quý Cha trong hạt Gia Định đã đến dâng Thánh lễ đồng tế và chúc mừng Giáo Xứ Khai Mạc Năm Thánh, Mừng 50 Năm Thành Lập Giáo xứ Hiển Linh .</p>
 <h3>CÁC LINH MỤC VÀ HỘI ĐỒNG MỤC VỤ</h3>
 <h3>GIÁO XỨ HIỂN LINH QUA CÁC NHIỆM KỲ</h3>
-<h3>1.CÁC LINH MỤC PHỤC VỤ GIÁO XỨ HIỂN LINH:</h3>
-<div class="priest-card">
-<h4>1. Linh Mục Luca PHẠM ANH DỤ</h4>
-<p>Sinh ngày 24 tháng 11 năm 1927</p>
-<p>Phục vụ giáo xứ từ năm 1964 đến năm 1975</p>
-<p>Năm 1975 xuất ngoại sang Hoa Kỳ</p>
-<p>An nghỉ trong Chúa lúc 19g53, ngày 13-11-1999 tại Hoa Kỳ — Hưởng thọ 72 tuổi</p>
+<p class="priest-list-title">CÁC LINH MỤC ĐÃ VÀ ĐANG PHỤC VỤ GIÁO XỨ HIỂN LINH</p>
+
+<div class="priest-profile">
+  <div class="priest-profile-img no-photo"></div>
+  <div class="priest-profile-body">
+    <div class="priest-profile-name">1. Linh Mục Luca PHẠM ANH DỤ</div>
+    <p>Sinh ngày 24 tháng 11 năm 1927</p>
+    <p>Phục vụ giáo xứ từ năm 1964 đến năm 1975</p>
+    <p>Năm 1975 xuất ngoại sang Hoa Kỳ</p>
+    <p class="note">An nghỉ trong Chúa lúc 19g53, ngày 13-11-1999 tại Hoa Kỳ — Hưởng thọ 72 tuổi</p>
+  </div>
 </div>
-<div class="priest-card">
-<h4>2. Linh Mục Phêrô VŨ VĂN HUỲNH</h4>
-<p>Sinh ngày 23 tháng 4 năm 1923</p>
-<p>Phục vụ giáo xứ từ năm 1975 đến ngày 30 tháng 5 năm 1992</p>
-<p>Ngày 30 tháng 5 năm 1992 nghỉ hưu dưỡng tại Giáo xứ Bạch Lâm</p>
-<p>Mừng Kim Khánh Linh mục ngày 1 tháng 5 năm 2000 tại Giáo xứ Hiển Linh</p>
-<p>An nghỉ trong Chúa ngày 20 tháng 5 năm 2001 tại Giáo xứ Bạch Lâm — Hưởng thọ 78 tuổi</p>
+
+<div class="priest-profile">
+  <div class="priest-profile-img no-photo"></div>
+  <div class="priest-profile-body">
+    <div class="priest-profile-name">2. Linh Mục Phêrô VŨ VĂN HUỲNH</div>
+    <p>Sinh ngày 23 tháng 4 năm 1923</p>
+    <p>Phục vụ giáo xứ từ năm 1975 đến ngày 30 tháng 5 năm 1992</p>
+    <p>Ngày 30 tháng 5 năm 1992 nghỉ hưu dưỡng tại Giáo xứ Bạch Lâm</p>
+    <p>Mừng Kim Khánh Linh mục ngày 1 tháng 5 năm 2000 tại Giáo xứ Hiển Linh</p>
+    <p class="note">An nghỉ trong Chúa ngày 20 tháng 5 năm 2001 tại Giáo xứ Bạch Lâm — Hưởng thọ 78 tuổi</p>
+  </div>
 </div>
-<div class="priest-card">
-<h4>3. Linh Mục Gioan NGUYỄN VĂN MINH</h4>
-<p>Sinh ngày 2 tháng 1 năm 1932</p>
-<p>Phục vụ giáo xứ từ năm 1993 đến ngày 31 tháng 7 năm 2013</p>
-<p>Mừng Kim Khánh Linh mục ngày 23 tháng 4 năm 2012</p>
-<p>Ngày 31 tháng 7 năm 2013 nghỉ hưu an dưỡng tại TP. Hồ Chí Minh</p>
+
+<div class="priest-profile">
+  <div class="priest-profile-img no-photo"></div>
+  <div class="priest-profile-body">
+    <div class="priest-profile-name">3. Linh Mục Gioan NGUYỄN VĂN MINH</div>
+    <p>Sinh ngày 2 tháng 1 năm 1932</p>
+    <p>Phục vụ giáo xứ từ năm 1993 đến ngày 31 tháng 7 năm 2013</p>
+    <p>Mừng Kim Khánh Linh mục ngày 23 tháng 4 năm 2012</p>
+    <p class="note">Ngày 31 tháng 7 năm 2013 nghỉ hưu an dưỡng tại TP. Hồ Chí Minh</p>
+  </div>
 </div>
-<div class="priest-card">
-<h4>4. Linh Mục Giuse PHẠM SỸ TÙNG</h4>
-<p>Sinh ngày 07 tháng 12 năm 1969</p>
-<p>Phục vụ Giáo xứ Hiển Linh từ năm 2013 đến năm 2021</p>
+
+<div class="priest-profile">
+  <div class="priest-profile-img no-photo"></div>
+  <div class="priest-profile-body">
+    <div class="priest-profile-name">4. Linh Mục Giuse PHẠM SỸ TÙNG</div>
+    <p>Sinh ngày 07 tháng 12 năm 1969</p>
+    <p>Phục vụ Giáo xứ Hiển Linh từ năm 2013 đến năm 2021</p>
+  </div>
 </div>
-<div class="priest-card">
-<h4>5. Linh Mục Giuse NGUYỄN QUỐC VƯƠNG</h4>
-<p>Chánh xứ Giáo xứ Hiển Linh từ ngày 27 tháng 11 năm 2021 cho đến nay (2024)</p>
+
+<div class="priest-profile">
+  <div class="priest-profile-img no-photo"></div>
+  <div class="priest-profile-body">
+    <div class="priest-profile-name">5. Linh Mục Giuse NGUYỄN QUỐC VƯƠNG</div>
+    <p>Chánh xứ Giáo xứ Hiển Linh từ ngày 27 tháng 11 năm 2021 cho đến nay (2024)</p>
+  </div>
 </div>
-<h3>2. DANH SÁCH BAN THƯỜNG VỤ</h3>
+
+<p class="priest-list-title">2. DANH SÁCH BAN THƯỜNG VỤ</p>
 <h3>TỪ KHI THÀNH LẬP GIÁO XỨ CHO ĐẾN NAY.</h3>
 <h3>NĂM 1968: BẦU CỬ HỘI ĐỒNG MỤC VỤ GIÁO XỨ</h3>
 <p>Ông Giuse Phan Văn Tiên	 :Chủ Tịch.</p>
@@ -706,44 +913,11 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+<div style="display:none">
 <section id="ban-tv" class="section">
   <div class="section-header"><span class="sh-icon">✝️</span><h2>Ban Thường Vụ HĐMVX</h2><span class="acc-arrow">▼</span></div>
   <div class="section-content">
-    <div class="section-text"><h3>CÁC LINH MỤC VÀ HỘI ĐỒNG MỤC VỤ GIÁO XỨ QUA CÁC NHIỆM KỲ</h3>
-<h3>1.CÁC LINH MỤC PHỤC VỤ GIÁO XỨ HIỂN LINH:</h3>
-<div class="priest-card">
-<h4>1. Linh Mục Luca PHẠM ANH DỤ</h4>
-<p>Sinh ngày 24 tháng 11 năm 1927</p>
-<p>Phục vụ giáo xứ từ năm 1964 đến năm 1975</p>
-<p>Năm 1975 xuất ngoại sang Hoa Kỳ</p>
-<p>An nghỉ trong Chúa lúc 19g53, ngày 13-11-1999 tại Hoa Kỳ — Hưởng thọ 72 tuổi</p>
-</div>
-<div class="priest-card">
-<h4>2. Linh Mục Phêrô VŨ VĂN HUỲNH</h4>
-<p>Sinh ngày 23 tháng 4 năm 1923</p>
-<p>Phục vụ giáo xứ từ năm 1975 đến ngày 30 tháng 5 năm 1992</p>
-<p>Ngày 30 tháng 5 năm 1992 nghỉ hưu dưỡng tại Giáo xứ Bạch Lâm</p>
-<p>Mừng Kim Khánh Linh mục ngày 1 tháng 5 năm 2000 tại Giáo xứ Hiển Linh</p>
-<p>An nghỉ trong Chúa ngày 20 tháng 5 năm 2001 tại Giáo xứ Bạch Lâm — Hưởng thọ 78 tuổi</p>
-</div>
-<div class="priest-card">
-<h4>3. Linh Mục Gioan NGUYỄN VĂN MINH</h4>
-<p>Sinh ngày 2 tháng 1 năm 1932</p>
-<p>Phục vụ giáo xứ từ năm 1993 đến ngày 31 tháng 7 năm 2013</p>
-<p>Mừng Kim Khánh Linh mục ngày 23 tháng 4 năm 2012</p>
-<p>Ngày 31 tháng 7 năm 2013 nghỉ hưu an dưỡng tại TP. Hồ Chí Minh</p>
-</div>
-<div class="priest-card">
-<h4>4. Linh Mục Giuse PHẠM SỸ TÙNG</h4>
-<p>Sinh ngày 07 tháng 12 năm 1969</p>
-<p>Phục vụ Giáo xứ Hiển Linh từ năm 2013 đến năm 2021</p>
-</div>
-<div class="priest-card">
-<h4>5. Linh Mục Giuse NGUYỄN QUỐC VƯƠNG</h4>
-<p>Chánh xứ Giáo xứ Hiển Linh từ ngày 27 tháng 11 năm 2021 cho đến nay (2024)</p>
-</div>
-<h3>2. DANH SÁCH BAN THƯỜNG VỤ</h3>
-<h3>TỪ KHI THÀNH LẬP GIÁO XỨ CHO ĐẾN NAY.</h3>
+    <div class="section-text"><h3>DANH SÁCH BAN THƯỜNG VỤ HỘI ĐỒNG MỤC VỤ GIÁO XỨ QUA CÁC NHIỆM KỲ</h3>
 <h3>NĂM 1968: BẦU CỬ HỘI ĐỒNG MỤC VỤ GIÁO XỨ</h3>
 <p>Ông Giuse Phan Văn Tiên	 :Chủ Tịch.</p>
 <h4>Ông Giuse Nguyễn Văn Miêng	 :Phó Chủ Tịch</h4>
@@ -1394,18 +1568,42 @@ img{max-width:100%;display:block}
 <div class="photo-item" onclick="openLightbox('images/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg')"><img src="images/hdmv/z6397304118788_f8d86668ae0ea1219f05925f1c52a237.jpg" alt="" loading="lazy"></div>
 </div>
   </div>
-</section>  </main><!-- /main-col -->
+</section></div>  </main><!-- /main-col -->
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar-col"><div class="sidebar-sticky">
+  <!-- SIDEBAR (ẩn tạm) -->
+  <aside class="sidebar-col" style="display:none"><div class="sidebar-sticky">
+    <div class="sb-widget"><div class="sb-head">📋 Mục Lục</div></div>
+  </div></aside>
+</div><!-- /page-body -->
 
-    <!-- TIN TỨC HÀNG NGÀY -->
-    <div class="sb-widget">
-      <div class="sb-head">
-        📰 Tin Tức Giáo Xứ
-        <a href="#" onclick="toggleAddForm(event)">+ Thêm tin</a>
+<!-- HAI CỘT TIN TỨC -->
+<div class="news2col-wrap">
+  <div class="news2col-grid">
+
+    <!-- CỘT 1: TIN GIÁO HỘI (RSS live) -->
+    <div class="news2col-box">
+      <div class="news2col-head">
+        <span class="news2col-icon">🌍</span>
+        <span>Tin Tức Giáo Hội</span>
+        <span class="news2col-src-tabs">
+          <button class="src-tab act" onclick="loadFeed('tgp',this)">TGP Sài Gòn</button>
+          <button class="src-tab" onclick="loadFeed('vatican',this)">Vatican</button>
+          <button class="src-tab" onclick="loadFeed('hdgm',this)">HĐGM</button>
+        </span>
       </div>
-      <div id="newsList"></div>
+      <div id="feedList" class="news2col-body">
+        <div class="feed-loading">⏳ Đang tải tin tức...</div>
+      </div>
+    </div>
+
+    <!-- CỘT 2: TIN TRONG GIÁO XỨ -->
+    <div class="news2col-box">
+      <div class="news2col-head">
+        <span class="news2col-icon">⛪</span>
+        <span>Tin Trong Giáo Xứ</span>
+        <a href="#" onclick="toggleAddForm(event)" class="news2col-add">+ Thêm tin</a>
+      </div>
+      <div id="newsList2" class="news2col-body"></div>
       <div class="news-add-form" id="addForm">
         <label>Tiêu đề tin *</label>
         <input type="text" id="nTitle" placeholder="VD: Thánh Lễ Bổn Mạng ngày 6/1...">
@@ -1435,89 +1633,8 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
-    <!-- TIN TỨC CÔNG GIÁO -->
-    <div class="sb-widget">
-      <div class="sb-head">⛪ Tin Tức Công Giáo</div>
-      <div style="padding:.6rem">
-        <a href="https://tgpsaigon.net/tin-tuc" target="_blank" rel="noopener" class="cg-link">
-          <span class="cg-link-icon">🏛️</span>
-          <div class="cg-link-text">
-            <strong>Tổng Giáo Phận Sài Gòn</strong>
-            <span>tgpsaigon.net</span>
-          </div>
-          <span class="cg-link-arrow">↗</span>
-        </a>
-        <a href="https://hdgmvietnam.com/" target="_blank" rel="noopener" class="cg-link">
-          <span class="cg-link-icon">🇻🇳</span>
-          <div class="cg-link-text">
-            <strong>Hội Đồng Giám Mục Việt Nam</strong>
-            <span>hdgmvietnam.com</span>
-          </div>
-          <span class="cg-link-arrow">↗</span>
-        </a>
-        <a href="https://www.vaticannews.va/vi.html" target="_blank" rel="noopener" class="cg-link">
-          <span class="cg-link-icon">🌍</span>
-          <div class="cg-link-text">
-            <strong>Vatican News (Tiếng Việt)</strong>
-            <span>vaticannews.va</span>
-          </div>
-          <span class="cg-link-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- KINH SÁCH HÀNG NGÀY -->
-    <div class="sb-widget">
-      <div class="sb-head">📖 Kinh Sách Hàng Ngày</div>
-      <div class="reading-box">
-        <div class="reading-date" id="readingDate"></div>
-        <div class="reading-title">Thứ Hai Tuần X Mùa Thường Niên</div>
-        <div class="reading-ref">Bài Đọc I — 1 V 17,1-6</div>
-        <div class="reading-text">
-          Tiên tri Êlia người Titbe, thuộc vùng Galát, thưa với Vua Akhab: "Có Đức Chúa, Thiên Chúa hằng sống của Israel mà tôi đang phụng sự, tôi thề: Sẽ không có sương, không có mưa trong những năm này, nếu tôi không nói lời đó..."
-        </div>
-        <br>
-        <div class="reading-ref">Tin Mừng — Mt 5,1-12</div>
-        <div class="reading-text">
-          "Phúc thay ai có tâm hồn nghèo khó, vì Nước Trời là của họ. Phúc thay ai hiền lành, vì họ sẽ được Đất Hứa làm gia nghiệp..."
-        </div>
-      </div>
-    </div>
-
-    <!-- MỤC LỤC -->
-    <div class="sb-widget">
-      <div class="sb-head">📋 Mục Lục</div>
-      <div class="section-nav-list" id="secNav">
-        <div class="snl-group">Lịch sử & Tổ chức</div>
-        <div class="snl-item" onclick="scrollTo('lich-su')"><span class="snl-icon">⛪</span>Lịch Sử Giáo Xứ</div>
-        <div class="snl-item" onclick="scrollTo('ban-tv')"><span class="snl-icon">✝️</span>Ban Thường Vụ HĐMVX</div>
-        <div class="snl-group">Giáo Khu</div>
-        <div class="snl-item" onclick="scrollTo('khu-1')"><span class="snl-icon">🏘️</span>GK I — Thánh Cả Giuse</div>
-        <div class="snl-item" onclick="scrollTo('khu-2')"><span class="snl-icon">🏘️</span>GK II — Phêrô & Phaolô</div>
-        <div class="snl-item" onclick="scrollTo('khu-3')"><span class="snl-icon">🏘️</span>GK III — Gioan Baotixita</div>
-        <div class="snl-item" onclick="scrollTo('khu-4')"><span class="snl-icon">🏘️</span>GK IV — Phanxicô Xaviê</div>
-        <div class="snl-group">Hội Đoàn</div>
-        <div class="snl-item" onclick="scrollTo('cac-so')"><span class="snl-icon">🙏</span>Dòng Tu Đaminh</div>
-        <div class="snl-item" onclick="scrollTo('thanh-tam')"><span class="snl-icon">❤️</span>Hội Thánh Tâm</div>
-        <div class="snl-item" onclick="scrollTo('hien-mau')"><span class="snl-icon">👩</span>Hội Hiền Mẫu</div>
-        <div class="snl-item" onclick="scrollTo('daminh')"><span class="snl-icon">✠</span>Huynh Đoàn Đaminh</div>
-        <div class="snl-item" onclick="scrollTo('legio')"><span class="snl-icon">🌹</span>Legio Mariae</div>
-        <div class="snl-group">Ca Đoàn</div>
-        <div class="snl-item" onclick="scrollTo('cecilia')"><span class="snl-icon">🎵</span>Ca Đoàn Cecilia</div>
-        <div class="snl-item" onclick="scrollTo('gioi-tre-ca')"><span class="snl-icon">🎶</span>Ca Đoàn Giới Trẻ</div>
-        <div class="snl-item" onclick="scrollTo('goretti')"><span class="snl-icon">🎼</span>Ca Đoàn Maria Goretti</div>
-        <div class="snl-group">Ban Phục Vụ</div>
-        <div class="snl-item" onclick="scrollTo('phuc-vu')"><span class="snl-icon">🕯️</span>Ban Phục Vụ Thánh Lễ</div>
-        <div class="snl-item" onclick="scrollTo('le-sinh')"><span class="snl-icon">⚜️</span>Ban Lễ Sinh</div>
-        <div class="snl-item" onclick="scrollTo('lcttx')"><span class="snl-icon">💖</span>Ban LCTX</div>
-        <div class="snl-item" onclick="scrollTo('caritas')"><span class="snl-icon">🤝</span>Ban Caritas</div>
-        <div class="snl-item" onclick="scrollTo('gioi-tre')"><span class="snl-icon">🌟</span>Ban Giới Trẻ</div>
-        <div class="snl-item" onclick="scrollTo('trat-tu')"><span class="snl-icon">🛡️</span>Ban Trật Tự</div>
-      </div>
-    </div>
-
-  </div></aside>
-</div><!-- /page-body -->
+  </div>
+</div><!-- /news2col-wrap -->
 
 <!-- FOOTER -->
 <footer style="background:var(--bg2);color:var(--ink3);text-align:center;padding:1.5rem;font-size:.75rem;letter-spacing:.04em;border-top:2px solid var(--gold2)">
@@ -1573,22 +1690,6 @@ function getDefaultNews() {
   ];
 }
 
-function renderNews() {
-  const el = document.getElementById('newsList');
-  if (!newsList.length) {
-    el.innerHTML = '<div style="padding:1rem;font-size:.8rem;color:#888;text-align:center">Chưa có tin tức</div>';
-    return;
-  }
-  el.innerHTML = newsList.slice(0,8).map((n,i) => `
-    <div class="news-item">
-      <span class="news-num">${i+1}</span>
-      <div class="news-body">
-        <div class="news-cat">${n.cat}</div>
-        <div class="news-title">${n.title}</div>
-        <div class="news-time">${n.time||n.date}</div>
-      </div>
-    </div>`).join('');
-}
 
 loadNews();
 
@@ -1689,7 +1790,75 @@ function showToast(msg) {
   setTimeout(() => t.style.opacity = '0', 3500);
 }
 
-// SCROLL ANIMATIONS
+// ===== RSS FEED =====
+const FEEDS = {
+  tgp:     { url:'https://tgpsaigon.net/rss.xml',       label:'TGP Sài Gòn',   site:'tgpsaigon.net' },
+  vatican: { url:'https://www.vaticannews.va/vi.rss.xml', label:'Vatican News', site:'vaticannews.va' },
+  hdgm:    { url:'https://hdgmvietnam.com/feed',          label:'HĐGM VN',      site:'hdgmvietnam.com' }
+};
+const RSS_PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+async function loadFeed(key, btn) {
+  // Update tab UI
+  document.querySelectorAll('.src-tab').forEach(t => t.classList.remove('act'));
+  if (btn) btn.classList.add('act');
+
+  const el = document.getElementById('feedList');
+  el.innerHTML = '<div class="feed-loading">⏳ Đang tải tin tức...</div>';
+
+  const feed = FEEDS[key];
+  try {
+    const res = await fetch(RSS_PROXY + encodeURIComponent(feed.url) + '&count=5');
+    const data = await res.json();
+    if (!data.items || !data.items.length) throw new Error('no items');
+
+    el.innerHTML = data.items.slice(0,5).map(item => {
+      const img = item.thumbnail || item.enclosure?.link || '';
+      const desc = item.description
+        ? item.description.replace(/<[^>]+>/g,'').substring(0,120).trim() + '…'
+        : '';
+      const date = item.pubDate
+        ? new Date(item.pubDate).toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric'})
+        : '';
+      return `<a href="${item.link}" target="_blank" rel="noopener" class="feed-card">
+        <div class="feed-card-img ${img?'':'no-img'}">
+          ${img ? `<img src="${img}" alt="" loading="lazy" onerror="this.parentElement.classList.add('no-img');this.remove()">` : '✝'}
+        </div>
+        <div class="feed-card-body">
+          <div class="feed-card-source">${feed.label}</div>
+          <div class="feed-card-title">${item.title}</div>
+          ${desc ? `<div class="feed-card-desc">${desc}</div>` : ''}
+          <div class="feed-card-meta">${date} · ${feed.site} ↗</div>
+        </div>
+      </a>`;
+    }).join('');
+  } catch(e) {
+    el.innerHTML = `<div class="feed-error">Không tải được tin tức. <a href="${feed.url.replace('/rss.xml','').replace('/feed','')}" target="_blank" style="color:var(--gold2)">Xem trực tiếp tại ${feed.site} ↗</a></div>`;
+  }
+}
+
+// Load mặc định TGP khi trang mở
+loadFeed('tgp', null);
+
+// ===== RENDER TIN GIÁO XỨ =====
+function renderNews() {
+  const el = document.getElementById('newsList2');
+  if (!el) return;
+  if (!newsList.length) {
+    el.innerHTML = '<div class="feed-loading" style="font-style:italic">Chưa có tin tức. Nhấn "+ Thêm tin" để đăng.</div>';
+    return;
+  }
+  el.innerHTML = newsList.slice(0,6).map((n,i) => `
+    <div class="pnews-card">
+      <div class="pnews-num">${i+1}</div>
+      <div class="pnews-body">
+        <div class="pnews-cat">${n.cat}</div>
+        <div class="pnews-title">${n.title}</div>
+        ${n.body ? `<div class="pnews-desc">${n.body}</div>` : ''}
+        <div class="pnews-meta">${n.time||n.date}</div>
+      </div>
+    </div>`).join('');
+}
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.section').forEach(s=>io.observe(s));
 

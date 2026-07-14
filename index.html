@@ -1931,21 +1931,21 @@ function toggleRM(id) {
 // Khởi tạo sau khi DOM load
 document.addEventListener('DOMContentLoaded', () => {
   initRM('lich-su');
-});
 
-// ACCORDION
-document.querySelectorAll('.section-header').forEach(header => {
-  header.addEventListener('click', () => {
-    const section = header.closest('.section');
-    const isOpen = section.classList.contains('open');
-    // Đóng tất cả
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('open'));
-    // Mở cái được click (nếu chưa mở)
-    if (!isOpen) section.classList.add('open');
-    // Scroll đến section
-    setTimeout(() => {
-      section.scrollIntoView({behavior:'smooth', block:'start'});
-    }, 50);
+  // ACCORDION
+  document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const section = header.closest('.section');
+      const isOpen = section.classList.contains('open');
+      // Đóng tất cả
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('open'));
+      // Mở cái được click (nếu chưa mở)
+      if (!isOpen) section.classList.add('open');
+      // Scroll đến section
+      setTimeout(() => {
+        section.scrollIntoView({behavior:'smooth', block:'start'});
+      }, 50);
+    });
   });
 });
 

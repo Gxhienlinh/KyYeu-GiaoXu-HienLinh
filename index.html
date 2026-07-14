@@ -223,7 +223,6 @@ img{max-width:100%;display:block}
   background:var(--gold2);margin-top:.3rem;border-radius:1px;
 }
 
-.section-content{padding:1.4rem 1.6rem;display:grid;gap:1.8rem}
 .section-content.has-img{grid-template-columns:1fr 1fr}
 @media(max-width:700px){.section-content.has-img{grid-template-columns:1fr}}
 
@@ -1880,7 +1879,7 @@ const nav=new IntersectionObserver(es=>{
       const mapped=map[id]||id;
       const topLink=document.querySelector(`.nav-link[href="#${mapped}"]`);
       if(topLink)topLink.classList.add('act');
-      const sideItem=document.querySelector(`.snl-item[onclick="scrollTo('${id}')"]`);
+      const sideItem=document.querySelector(`.snl-item[onclick="scrollToSection('${id}')"]`);
       if(sideItem)sideItem.classList.add('act');
     }
   });
@@ -1959,7 +1958,7 @@ window.addEventListener('scroll',()=>{
 });
 
 // SCROLL TO
-function scrollTo(id){
+function scrollToSection(id){
   const el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
 }
